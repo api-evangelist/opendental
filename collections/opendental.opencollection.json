@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "Authorization",
+        "value": "ODFHIR {{developerKey}}/{{customerKey}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Patients", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Search patients", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/patients?LName=&FName=" },
+          "docs": "Searches patients using Patient Select-style logic with many optional filters."
+        },
+        {
+          "info": { "name": "List patients (Simple)", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/patients/Simple" },
+          "docs": "Fast patient listing with optional filters."
+        },
+        {
+          "info": { "name": "Get a patient", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/patients/:PatNum",
+            "params": [ { "name": "PatNum", "value": "", "type": "path", "description": "Patient primary key." } ]
+          },
+          "docs": "Retrieves one patient by PatNum."
+        },
+        {
+          "info": { "name": "Create a patient", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.opendental.com/api/v1/patients", "body": { "type": "json", "data": "{\n  \"LName\": \"Smith\",\n  \"FName\": \"Jane\"\n}" } },
+          "docs": "Creates a new patient."
+        },
+        {
+          "info": { "name": "Update a patient", "type": "http" },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/patients/:PatNum",
+            "params": [ { "name": "PatNum", "value": "", "type": "path", "description": "Patient primary key." } ],
+            "body": { "type": "json", "data": "{}" }
+          },
+          "docs": "Updates an existing patient. Patients cannot be deleted via the API."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Appointments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List appointments", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/appointments" },
+          "docs": "Retrieves multiple appointments with optional filters."
+        },
+        {
+          "info": { "name": "Get an appointment", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/appointments/:AptNum", "params": [ { "name": "AptNum", "value": "", "type": "path" } ] },
+          "docs": "Retrieves one appointment by AptNum."
+        },
+        {
+          "info": { "name": "Find available slots", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/appointments/Slots" },
+          "docs": "Finds available appointment time slots."
+        },
+        {
+          "info": { "name": "Create an appointment", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.opendental.com/api/v1/appointments", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new standard appointment."
+        },
+        {
+          "info": { "name": "Break an appointment", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.opendental.com/api/v1/appointments/:AptNum/Break", "params": [ { "name": "AptNum", "value": "", "type": "path" } ] },
+          "docs": "Marks an appointment as broken."
+        },
+        {
+          "info": { "name": "Update confirmation status", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.opendental.com/api/v1/appointments/:AptNum/Confirm", "params": [ { "name": "AptNum", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{}" } },
+          "docs": "Updates an appointment's confirmation status."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Providers", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List providers", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/providers" },
+          "docs": "Retrieves all providers with optional filtering by ClinicNum or DateTStamp."
+        },
+        {
+          "info": { "name": "Get a provider", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/providers/:ProvNum", "params": [ { "name": "ProvNum", "value": "", "type": "path" } ] },
+          "docs": "Retrieves one provider by ProvNum."
+        },
+        {
+          "info": { "name": "Create a provider", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.opendental.com/api/v1/providers", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a provider, billing entity, or dummy provider."
+        },
+        {
+          "info": { "name": "Update a provider", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.opendental.com/api/v1/providers/:ProvNum", "params": [ { "name": "ProvNum", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{}" } },
+          "docs": "Updates an existing provider."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Procedures (ProcedureLogs)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List procedure logs", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/procedurelogs" },
+          "docs": "Retrieves multiple procedure logs with optional filters."
+        },
+        {
+          "info": { "name": "Get a procedure log", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum", "params": [ { "name": "ProcNum", "value": "", "type": "path" } ] },
+          "docs": "Retrieves one procedure log by ProcNum."
+        },
+        {
+          "info": { "name": "Create a procedure log", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.opendental.com/api/v1/procedurelogs", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new procedure log."
+        },
+        {
+          "info": { "name": "Update a procedure log", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum", "params": [ { "name": "ProcNum", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{}" } },
+          "docs": "Updates an existing procedure log."
+        },
+        {
+          "info": { "name": "Delete a procedure log", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum", "params": [ { "name": "ProcNum", "value": "", "type": "path" } ] },
+          "docs": "Deletes a procedure log."
+        },
+        {
+          "info": { "name": "Get insurance history", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/procedurelogs/InsuranceHistory" },
+          "docs": "Previous treatment dates for a patient's insurance plan."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Claims", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List claims", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/claims" },
+          "docs": "Retrieves multiple claims with optional filters."
+        },
+        {
+          "info": { "name": "Get a claim", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/claims/:ClaimNum", "params": [ { "name": "ClaimNum", "value": "", "type": "path" } ] },
+          "docs": "Retrieves one claim by ClaimNum."
+        },
+        {
+          "info": { "name": "Create a claim", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.opendental.com/api/v1/claims", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new claim."
+        },
+        {
+          "info": { "name": "Update claim status", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.opendental.com/api/v1/claims/:ClaimNum/Status", "params": [ { "name": "ClaimNum", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{}" } },
+          "docs": "Updates a claim's status."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Payments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List payments", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.opendental.com/api/v1/payments" },
+          "docs": "Retrieves payments with optional filtering by PatNum, PayType, DateEntry."
+        },
+        {
+          "info": { "name": "Create a payment", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.opendental.com/api/v1/payments", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a new payment for a patient."
+        },
+        {
+          "info": { "name": "Create a refund", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.opendental.com/api/v1/payments/Refund", "body": { "type": "json", "data": "{}" } },
+          "docs": "Creates a refund payment for an existing payment."
+        },
+        {
+          "info": { "name": "Update a payment", "type": "http" },
+          "http": { "method": "PUT", "url": "https://api.opendental.com/api/v1/payments/:PayNum", "params": [ { "name": "PayNum", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{}" } },
+          "docs": "Updates payment details (check number, bank branch, note, type, process status)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

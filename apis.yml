@@ -1,0 +1,295 @@
+aid: opendental
+url: https://raw.githubusercontent.com/api-evangelist/opendental/refs/heads/main/apis.yml
+name: Open Dental
+kind: company
+description: >-
+  Open Dental is dental practice management software with an openly documented
+  public REST API. The API is hosted at Open Dental headquarters (base
+  https://api.opendental.com/api/v1) and lets approved third-party developers
+  read and write practice data - patients, appointments, providers, procedures,
+  insurance claims, payments, ledger adjustments, fee schedules, recalls,
+  documents, medications and prescriptions, referrals, and clinical sheets - on
+  behalf of Open Dental customers. Requests authenticate with a per-application
+  Developer Key and a per-customer Customer Key sent together in an
+  Authorization ODFHIR {DeveloperKey}/{CustomerKey} header. The public spec
+  documents 130+ resource groups with GET/POST/PUT/DELETE operations. Open
+  Dental also runs a local API Service option that talks to the on-premises Open
+  Dental program without routing through Open Dental's servers, and a separate
+  FHIR interface.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Dental
+- Practice Management
+- Healthcare
+- EHR
+- Patient Records
+- REST
+created: '2026-07-03'
+modified: '2026-07-03'
+specificationVersion: '0.19'
+apis:
+- aid: opendental:opendental-patients-api
+  name: Open Dental Patients API
+  tags:
+  - Patients
+  - Demographics
+  - Records
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apipatients.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apipatients.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Create, read, update, and search patient demographic records.
+    Includes fast Simple listing and a full Patient Select-style search with
+    dozens of filters (name, phone, chart number, SSN, clinic, provider). Patients
+    cannot be deleted via the API - deletion is only allowed inside Open Dental.
+- aid: opendental:opendental-appointments-api
+  name: Open Dental Appointments API
+  tags:
+  - Appointments
+  - Scheduling
+  - WebSched
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apiappointments.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apiappointments.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Schedule and manage appointments - create standard, planned, and
+    WebSched appointments, find open time slots (Slots and SlotsWebSched), read
+    ASAP and WebSched lists, break appointments, append notes, and update
+    confirmation status.
+- aid: opendental:opendental-providers-api
+  name: Open Dental Providers API
+  tags:
+  - Providers
+  - Staff
+  - Clinics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apiproviders.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apiproviders.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Read, create, and update providers - dentists, hygienists, billing
+    entities, and dummy providers - with optional filtering by clinic or
+    modification timestamp.
+- aid: opendental:opendental-procedures-api
+  name: Open Dental Procedures API
+  tags:
+  - Procedures
+  - ProcedureLogs
+  - Treatment
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apiprocedurelogs.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apiprocedurelogs.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Full CRUD over ProcedureLogs (individual treatment procedures on a
+    patient's chart), plus insurance treatment-history entries and group notes
+    across multiple procedures.
+- aid: opendental:opendental-insurance-claims-api
+  name: Open Dental Insurance & Claims API
+  tags:
+  - Claims
+  - Insurance
+  - Benefits
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apiclaims.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apiclaims.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Manage insurance claims and related insurance data - create, read,
+    update, and delete claims, change claim status, split claims, and work with
+    insurance plans, subscribers, benefits, and claim procedures.
+- aid: opendental:opendental-payments-api
+  name: Open Dental Payments API
+  tags:
+  - Payments
+  - Refunds
+  - Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apipayments.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apipayments.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Post patient payments, issue refunds, update payment details
+    (check number, bank branch, note, type, process status), and reallocate an
+    existing payment's splits across procedures and payment-plan charges.
+- aid: opendental:opendental-accounts-ledger-api
+  name: Open Dental Accounts & Ledger API
+  tags:
+  - Ledger
+  - Adjustments
+  - PaySplits
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apispecification.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apispecification.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Work with the patient account ledger - adjustments, payment splits
+    (PaySplits), payment plans and charges, and statements - to build and
+    reconcile a patient's financial picture.
+- aid: opendental:opendental-fees-feeschedules-api
+  name: Open Dental Fees & Fee Schedules API
+  tags:
+  - Fees
+  - Fee Schedules
+  - Pricing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apifees.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apifees.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Manage procedure fees and the fee schedules (FeeScheds) that price
+    them - list, create, and update fee amounts per procedure code, provider,
+    and clinic across a practice's fee schedules.
+- aid: opendental:opendental-recalls-api
+  name: Open Dental Recalls API
+  tags:
+  - Recalls
+  - Hygiene
+  - Reminders
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apispecification.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apispecification.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Read and manage patient recalls - the hygiene and continuing-care
+    reminders that drive re-appointment - including due dates and recall types.
+- aid: opendental:opendental-documents-api
+  name: Open Dental Documents API
+  tags:
+  - Documents
+  - Images
+  - Attachments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apispecification.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apispecification.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Upload, download, and manage documents attached to a patient's
+    record - scanned forms, images, and files stored in the Open Dental imaging
+    module.
+- aid: opendental:opendental-medications-rx-api
+  name: Open Dental Medications & Prescriptions API
+  tags:
+  - Medications
+  - Prescriptions
+  - RxPats
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apispecification.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apispecification.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Manage the medication catalog (Medications), a patient's medication
+    list (MedicationPats), and prescriptions written for patients (RxPats).
+- aid: opendental:opendental-referrals-api
+  name: Open Dental Referrals API
+  tags:
+  - Referrals
+  - Specialists
+  - RefAttaches
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apispecification.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apispecification.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Manage referral sources and specialists (Referrals) and the
+    attachments that link a referral to a patient or procedure (RefAttaches) for
+    inbound and outbound referral tracking.
+- aid: opendental:opendental-sheets-api
+  name: Open Dental Sheets API
+  tags:
+  - Sheets
+  - Forms
+  - eForms
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.opendental.com/site/apispecification.html
+  baseURL: https://api.opendental.com/api/v1
+  properties:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+  - url: https://www.opendental.com/site/apispecification.html
+    type: APIReference
+  - url: openapi/opendental-openapi.yml
+    type: OpenAPI
+  description: Read and create Sheets - the configurable clinical and
+    administrative forms (consent forms, patient forms, treatment plans) that
+    Open Dental renders and stores per patient.
+common:
+- type: GitHubOrganization
+  url: https://github.com/OpenDental
+- type: LinkedIn
+  url: https://www.linkedin.com/company/open-dental-software
+- type: Website
+  url: https://www.opendental.com
+- type: Documentation
+  url: https://www.opendental.com/site/apispecification.html
+- type: Plans
+  url: plans/opendental-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/opendental-rate-limits.yml
+- type: FinOps
+  url: finops/opendental-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

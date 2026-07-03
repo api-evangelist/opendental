@@ -1,0 +1,326 @@
+{
+  "info": {
+    "name": "Open Dental API",
+    "description": "REST API for Open Dental dental practice management software, hosted at Open Dental headquarters. Base URL: https://api.opendental.com/api/v1. Authenticate with an 'Authorization: ODFHIR {DeveloperKey}/{CustomerKey}' header - the Developer Key is issued by Open Dental Vendor Relations and the Customer Key is per Open Dental customer. This collection covers the endpoint-confirmed resources (Patients, Appointments, Providers, ProcedureLogs, Claims, Payments); the full published spec documents 130+ resource groups.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Authorization", "type": "string" },
+      { "key": "value", "value": "ODFHIR {{developerKey}}/{{customerKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.opendental.com/api/v1", "type": "string" },
+    { "key": "developerKey", "value": "", "type": "string" },
+    { "key": "customerKey", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Patients",
+      "item": [
+        {
+          "name": "Search patients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/patients?LName=&FName=", "host": ["{{baseUrl}}"], "path": ["patients"], "query": [ { "key": "LName", "value": "" }, { "key": "FName", "value": "" } ] },
+            "description": "Searches patients using Patient Select-style logic with many optional filters."
+          }
+        },
+        {
+          "name": "List patients (Simple)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/patients/Simple", "host": ["{{baseUrl}}"], "path": ["patients", "Simple"] },
+            "description": "Fast patient listing with optional filters."
+          }
+        },
+        {
+          "name": "Get a patient",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/patients/:PatNum", "host": ["{{baseUrl}}"], "path": ["patients", ":PatNum"], "variable": [ { "key": "PatNum", "value": "" } ] },
+            "description": "Retrieves one patient by PatNum."
+          }
+        },
+        {
+          "name": "Create a patient",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"LName\": \"Smith\",\n  \"FName\": \"Jane\"\n}" },
+            "url": { "raw": "{{baseUrl}}/patients", "host": ["{{baseUrl}}"], "path": ["patients"] },
+            "description": "Creates a new patient."
+          }
+        },
+        {
+          "name": "Update a patient",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/patients/:PatNum", "host": ["{{baseUrl}}"], "path": ["patients", ":PatNum"], "variable": [ { "key": "PatNum", "value": "" } ] },
+            "description": "Updates an existing patient. Patients cannot be deleted via the API."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "item": [
+        {
+          "name": "List appointments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments", "host": ["{{baseUrl}}"], "path": ["appointments"] },
+            "description": "Retrieves multiple appointments with optional filters."
+          }
+        },
+        {
+          "name": "Get an appointment",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments/:AptNum", "host": ["{{baseUrl}}"], "path": ["appointments", ":AptNum"], "variable": [ { "key": "AptNum", "value": "" } ] },
+            "description": "Retrieves one appointment by AptNum."
+          }
+        },
+        {
+          "name": "Find available slots",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments/Slots", "host": ["{{baseUrl}}"], "path": ["appointments", "Slots"] },
+            "description": "Finds available appointment time slots."
+          }
+        },
+        {
+          "name": "Create an appointment",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/appointments", "host": ["{{baseUrl}}"], "path": ["appointments"] },
+            "description": "Creates a new standard appointment."
+          }
+        },
+        {
+          "name": "Break an appointment",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/appointments/:AptNum/Break", "host": ["{{baseUrl}}"], "path": ["appointments", ":AptNum", "Break"], "variable": [ { "key": "AptNum", "value": "" } ] },
+            "description": "Marks an appointment as broken."
+          }
+        },
+        {
+          "name": "Update confirmation status",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/appointments/:AptNum/Confirm", "host": ["{{baseUrl}}"], "path": ["appointments", ":AptNum", "Confirm"], "variable": [ { "key": "AptNum", "value": "" } ] },
+            "description": "Updates an appointment's confirmation status."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Providers",
+      "item": [
+        {
+          "name": "List providers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/providers", "host": ["{{baseUrl}}"], "path": ["providers"] },
+            "description": "Retrieves all providers with optional filtering by ClinicNum or DateTStamp."
+          }
+        },
+        {
+          "name": "Get a provider",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/providers/:ProvNum", "host": ["{{baseUrl}}"], "path": ["providers", ":ProvNum"], "variable": [ { "key": "ProvNum", "value": "" } ] },
+            "description": "Retrieves one provider by ProvNum."
+          }
+        },
+        {
+          "name": "Create a provider",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/providers", "host": ["{{baseUrl}}"], "path": ["providers"] },
+            "description": "Creates a provider, billing entity, or dummy provider."
+          }
+        },
+        {
+          "name": "Update a provider",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/providers/:ProvNum", "host": ["{{baseUrl}}"], "path": ["providers", ":ProvNum"], "variable": [ { "key": "ProvNum", "value": "" } ] },
+            "description": "Updates an existing provider."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Procedures (ProcedureLogs)",
+      "item": [
+        {
+          "name": "List procedure logs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/procedurelogs", "host": ["{{baseUrl}}"], "path": ["procedurelogs"] },
+            "description": "Retrieves multiple procedure logs with optional filters."
+          }
+        },
+        {
+          "name": "Get a procedure log",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/procedurelogs/:ProcNum", "host": ["{{baseUrl}}"], "path": ["procedurelogs", ":ProcNum"], "variable": [ { "key": "ProcNum", "value": "" } ] },
+            "description": "Retrieves one procedure log by ProcNum."
+          }
+        },
+        {
+          "name": "Create a procedure log",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/procedurelogs", "host": ["{{baseUrl}}"], "path": ["procedurelogs"] },
+            "description": "Creates a new procedure log."
+          }
+        },
+        {
+          "name": "Update a procedure log",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/procedurelogs/:ProcNum", "host": ["{{baseUrl}}"], "path": ["procedurelogs", ":ProcNum"], "variable": [ { "key": "ProcNum", "value": "" } ] },
+            "description": "Updates an existing procedure log."
+          }
+        },
+        {
+          "name": "Delete a procedure log",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/procedurelogs/:ProcNum", "host": ["{{baseUrl}}"], "path": ["procedurelogs", ":ProcNum"], "variable": [ { "key": "ProcNum", "value": "" } ] },
+            "description": "Deletes a procedure log."
+          }
+        },
+        {
+          "name": "Get insurance history",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/procedurelogs/InsuranceHistory", "host": ["{{baseUrl}}"], "path": ["procedurelogs", "InsuranceHistory"] },
+            "description": "Previous treatment dates for a patient's insurance plan."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Claims",
+      "item": [
+        {
+          "name": "List claims",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/claims", "host": ["{{baseUrl}}"], "path": ["claims"] },
+            "description": "Retrieves multiple claims with optional filters."
+          }
+        },
+        {
+          "name": "Get a claim",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/claims/:ClaimNum", "host": ["{{baseUrl}}"], "path": ["claims", ":ClaimNum"], "variable": [ { "key": "ClaimNum", "value": "" } ] },
+            "description": "Retrieves one claim by ClaimNum."
+          }
+        },
+        {
+          "name": "Create a claim",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/claims", "host": ["{{baseUrl}}"], "path": ["claims"] },
+            "description": "Creates a new claim."
+          }
+        },
+        {
+          "name": "Update claim status",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/claims/:ClaimNum/Status", "host": ["{{baseUrl}}"], "path": ["claims", ":ClaimNum", "Status"], "variable": [ { "key": "ClaimNum", "value": "" } ] },
+            "description": "Updates a claim's status."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "List payments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payments", "host": ["{{baseUrl}}"], "path": ["payments"] },
+            "description": "Retrieves payments with optional filtering by PatNum, PayType, DateEntry."
+          }
+        },
+        {
+          "name": "Create a payment",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/payments", "host": ["{{baseUrl}}"], "path": ["payments"] },
+            "description": "Creates a new payment for a patient."
+          }
+        },
+        {
+          "name": "Create a refund",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/payments/Refund", "host": ["{{baseUrl}}"], "path": ["payments", "Refund"] },
+            "description": "Creates a refund payment for an existing payment."
+          }
+        },
+        {
+          "name": "Update a payment",
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/payments/:PayNum", "host": ["{{baseUrl}}"], "path": ["payments", ":PayNum"], "variable": [ { "key": "PayNum", "value": "" } ] },
+            "description": "Updates payment details (check number, bank branch, note, type, process status)."
+          }
+        }
+      ]
+    }
+  ]
+}

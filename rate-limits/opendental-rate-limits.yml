@@ -1,0 +1,69 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Open Dental
+providerId: opendental
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Dental
+- Practice Management
+- Healthcare
+- Rate Limiting
+- Quotas
+description: >-
+  Open Dental throttles the cloud-hosted REST API by permission tier. An
+  application holding only "Read All" permission is limited to roughly one
+  request every 5 seconds, while higher tiers (for example, those including
+  ApiComm) are allowed roughly one request per second. Requests made through the
+  Local API or the API Service are NOT throttled at all, because they execute at
+  the dental office workstation against the running Open Dental program and never
+  travel through Open Dental's servers. The service returns 429 TooManyRequests
+  when too many requests are queued (retry after the Retry-After header) and 504
+  Gateway Timeout when a request does not finish within the 60-second processing
+  limit.
+notes: >-
+  Rate limits scale with the granted permission level, so request throughput is
+  effectively coupled to what the application is authorized to do. Numeric values
+  reflect the published guidance and can change; verify against the current spec.
+sources:
+- https://www.opendental.com/site/apispecification.html
+- https://www.opendental.com/site/apisetup.html
+- https://www.opendental.com/site/apipermissions.html
+responseCodes:
+  throttled: 429
+  timeout: 504
+limits:
+- name: Read-Only Tier
+  scope: application
+  metric: requests
+  limit: ~1 request / 5 seconds
+  notes: Applies when the application holds only "Read All" permission.
+- name: Higher Permission Tier
+  scope: application
+  metric: requests
+  limit: ~1 request / second
+  notes: Applies to tiers with elevated permissions such as ApiComm.
+- name: Local API / API Service
+  scope: workstation
+  metric: requests
+  limit: not throttled
+  notes: Requests run locally against the on-premises Open Dental program; they do not pass through Open Dental servers.
+- name: Request Processing Time
+  scope: request
+  metric: seconds
+  limit: 60 second cap
+  notes: A request that does not complete within 60 seconds returns 504 Gateway Timeout.
+policies:
+- name: Retry-After
+  description: On a 429 TooManyRequests response, wait the number of seconds given in the Retry-After header before retrying.
+- name: Permission-Scaled Throughput
+  description: Effective request rate rises with the permission tier granted to the application; request only the permissions you need.
+- name: Prefer Local API for Volume
+  description: For high-volume or latency-sensitive workloads at a single location, use the un-throttled Local API / API Service instead of the cloud API.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,165 @@
+aid: opendental
+name: Open Dental
+review:
+  question: Does Open Dental expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Open Dental's public developer surface is
+    a request/response REST API hosted at Open Dental headquarters
+    (https://api.opendental.com/api/v1), plus an on-premises Local API / API
+    Service and a separate FHIR interface - all request/response. There is no
+    server-push transport (WebSocket or SSE) documented on Open Dental's public
+    API to model. Applications that need change awareness poll REST resources
+    (for example, filtering by DateTStamp / SecDateTEdit).
+findings:
+  summary: |
+    Open Dental does not publish a documented public WebSocket API. Open Dental
+    is dental practice management software whose public API is a REST API hosted
+    at Open Dental headquarters, base https://api.opendental.com/api/v1.
+    Requests authenticate with an "Authorization: ODFHIR
+    {DeveloperKey}/{CustomerKey}" header (Developer Key issued by Open Dental
+    Vendor Relations; Customer Key per customer); some endpoints also accept
+    HTTP Basic with the Developer Key as username and Customer Key as password.
+    The published specification documents 130+ resource groups using standard
+    GET/POST/PUT/DELETE semantics. Open Dental also offers an on-premises Local
+    API / API Service (runs at the practice workstation against the running
+    program, not routed through Open Dental servers and not throttled) and a
+    distinct FHIR interface. No realtime, bidirectional, or streaming WebSocket
+    (ws:// or wss://) endpoint is documented anywhere on Open Dental's public
+    API as of the review date.
+  openSource: |
+    Open Dental's application source code is viewable on GitHub
+    (github.com/OpenDental) under Open Dental's own license and is often
+    described as "open source," but Open Dental does not accept outside code
+    contributions and only posts stable per-version branches. The commercial
+    practice-management product and its hosted API are proprietary services.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.opendental.com/api/v1
+      documented: true
+      note: Cloud REST API hosted at Open Dental HQ. ODFHIR header auth (or HTTP Basic). 130+ resource groups.
+    - protocol: REST (Local API / API Service)
+      scheme: http
+      documented: true
+      note: Requests run at the practice workstation against the on-premises Open Dental program; not routed through Open Dental servers and not throttled.
+    - protocol: FHIR (REST)
+      scheme: https
+      documented: true
+      note: Separate HL7 FHIR interface documented in the Open Dental FHIR spec; still request/response REST, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Open Dental's public API as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.opendental.com/api/v1/patients
+    - GET    https://api.opendental.com/api/v1/patients/Simple
+    - GET    https://api.opendental.com/api/v1/patients/{PatNum}
+    - POST   https://api.opendental.com/api/v1/patients
+    - PUT    https://api.opendental.com/api/v1/patients/{PatNum}
+    - GET    https://api.opendental.com/api/v1/appointments
+    - GET    https://api.opendental.com/api/v1/appointments/{AptNum}
+    - GET    https://api.opendental.com/api/v1/appointments/ASAP
+    - GET    https://api.opendental.com/api/v1/appointments/Slots
+    - GET    https://api.opendental.com/api/v1/appointments/SlotsWebSched
+    - GET    https://api.opendental.com/api/v1/appointments/WebSched
+    - POST   https://api.opendental.com/api/v1/appointments
+    - POST   https://api.opendental.com/api/v1/appointments/Planned
+    - POST   https://api.opendental.com/api/v1/appointments/SchedulePlanned
+    - POST   https://api.opendental.com/api/v1/appointments/WebSched
+    - PUT    https://api.opendental.com/api/v1/appointments/{AptNum}
+    - PUT    https://api.opendental.com/api/v1/appointments/{AptNum}/Break
+    - PUT    https://api.opendental.com/api/v1/appointments/{AptNum}/Note
+    - PUT    https://api.opendental.com/api/v1/appointments/{AptNum}/Confirm
+    - GET    https://api.opendental.com/api/v1/providers
+    - GET    https://api.opendental.com/api/v1/providers/{ProvNum}
+    - POST   https://api.opendental.com/api/v1/providers
+    - PUT    https://api.opendental.com/api/v1/providers/{ProvNum}
+    - GET    https://api.opendental.com/api/v1/procedurelogs
+    - GET    https://api.opendental.com/api/v1/procedurelogs/{ProcNum}
+    - POST   https://api.opendental.com/api/v1/procedurelogs
+    - PUT    https://api.opendental.com/api/v1/procedurelogs/{ProcNum}
+    - DELETE https://api.opendental.com/api/v1/procedurelogs/{ProcNum}
+    - GET    https://api.opendental.com/api/v1/procedurelogs/InsuranceHistory
+    - POST   https://api.opendental.com/api/v1/procedurelogs/InsuranceHistory
+    - GET    https://api.opendental.com/api/v1/procedurelogs/GroupNotes
+    - POST   https://api.opendental.com/api/v1/procedurelogs/GroupNote
+    - PUT    https://api.opendental.com/api/v1/procedurelogs/{ProcNum}/GroupNote
+    - DELETE https://api.opendental.com/api/v1/procedurelogs/{ProcNum}/GroupNote
+    - GET    https://api.opendental.com/api/v1/claims
+    - GET    https://api.opendental.com/api/v1/claims/{ClaimNum}
+    - POST   https://api.opendental.com/api/v1/claims
+    - PUT    https://api.opendental.com/api/v1/claims/{ClaimNum}
+    - PUT    https://api.opendental.com/api/v1/claims/{ClaimNum}/Status
+    - PUT    https://api.opendental.com/api/v1/claims/{ClaimNum}/Split
+    - DELETE https://api.opendental.com/api/v1/claims/{ClaimNum}
+    - GET    https://api.opendental.com/api/v1/payments
+    - POST   https://api.opendental.com/api/v1/payments
+    - POST   https://api.opendental.com/api/v1/payments/Refund
+    - PUT    https://api.opendental.com/api/v1/payments/{PayNum}
+    - PUT    https://api.opendental.com/api/v1/payments/{PayNum}/Partial
+  endpointsModeled:
+    - GET/POST/PUT https://api.opendental.com/api/v1/adjustments (Accounts & Ledger)
+    - GET https://api.opendental.com/api/v1/paysplits (Accounts & Ledger)
+    - GET/POST https://api.opendental.com/api/v1/fees (Fees & Fee Schedules)
+    - GET https://api.opendental.com/api/v1/feescheds (Fees & Fee Schedules)
+    - GET/PUT https://api.opendental.com/api/v1/recalls (Recalls)
+    - GET/POST https://api.opendental.com/api/v1/documents (Documents)
+    - GET https://api.opendental.com/api/v1/medications (Medications)
+    - GET/POST https://api.opendental.com/api/v1/medicationpats (Patient medications)
+    - GET/POST https://api.opendental.com/api/v1/rxpats (Prescriptions)
+    - GET/POST https://api.opendental.com/api/v1/referrals (Referrals)
+    - GET https://api.opendental.com/api/v1/refattaches (Referral attachments)
+    - GET/POST https://api.opendental.com/api/v1/sheets (Sheets)
+  modeledNote: |
+    The six resource groups above the line (Patients, Appointments, Providers,
+    ProcedureLogs, Claims, Payments) are endpoint-CONFIRMED against their
+    published per-resource reference pages. The Accounts/Ledger, Fees & Fee
+    Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, and
+    Sheets groups are MODELED on Open Dental's standard REST CRUD convention and
+    the resource names listed in the spec index; verify exact paths, actions,
+    and fields against the live per-resource pages before production use. The
+    full published spec documents 130+ resource groups in total.
+sources:
+  - url: https://www.opendental.com/site/apispecification.html
+    type: Documentation
+    note: API specification index; lists 130+ resource groups and GET/POST/PUT/DELETE semantics. No WebSocket mentioned.
+  - url: https://www.opendental.com/site/apisetup.html
+    type: Documentation
+    note: Developer setup; ODFHIR header auth, key request via vendor.relations@opendental.com, test database.
+  - url: https://www.opendental.com/site/apipatients.html
+    type: APIReference
+    note: Confirmed Patients endpoints (search, Simple, get, create, update; no delete).
+  - url: https://www.opendental.com/site/apiappointments.html
+    type: APIReference
+    note: Confirmed Appointments endpoints incl. Slots, WebSched, Break, Note, Confirm.
+  - url: https://www.opendental.com/site/apiproviders.html
+    type: APIReference
+    note: Confirmed Providers endpoints (list, get, create, update).
+  - url: https://www.opendental.com/site/apiprocedurelogs.html
+    type: APIReference
+    note: Confirmed ProcedureLogs endpoints incl. InsuranceHistory and GroupNote actions.
+  - url: https://www.opendental.com/site/apiclaims.html
+    type: APIReference
+    note: Confirmed Claims endpoints incl. Status and Split actions.
+  - url: https://www.opendental.com/site/apipayments.html
+    type: APIReference
+    note: Confirmed Payments endpoints incl. Refund and Partial split reallocation.
+  - url: https://www.opendental.com/site/apipermissions.html
+    type: Documentation
+    note: Permission-tier throttling (read-only ~1 req/5s, higher tiers ~1 req/s); 429 + Retry-After; 504 at 60s.
+  - url: https://github.com/OpenDental
+    type: SourceCode
+    note: Open Dental application source (viewable, no outside contributions).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Open Dental's public API is
+    request/response REST (cloud API, Local API / API Service, and a FHIR
+    interface). No AsyncAPI document was created because there is no server-push
+    transport on Open Dental's own API to model; change awareness is handled by
+    polling REST resources with timestamp filters.

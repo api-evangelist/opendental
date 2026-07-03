@@ -1,0 +1,107 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Open Dental
+providerId: opendental
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Dental
+- Practice Management
+- Healthcare
+- REST
+- Plans
+description: >-
+  Open Dental's REST API is not a self-serve, publicly-priced product. Access
+  is gated: a developer requests a Developer Key from Open Dental Vendor
+  Relations (vendor.relations@opendental.com) describing the application they
+  intend to build, and each Open Dental customer whose data will be accessed
+  must have a Customer Key enabled. API access is billed per location, and a key
+  must be assigned and enabled before charges apply - billing stops
+  automatically when a key is disabled. Open Dental does not publish specific
+  dollar amounts for API access on its public site and directs high-volume
+  developers to contact support to discuss pricing. Open Dental also offers a
+  Local API and API Service that run at the practice's own workstations against
+  the on-premises program; those are not routed through Open Dental's servers.
+notes: >-
+  Exact per-location API fees are not published publicly and are not reconciled
+  here. A free test database with test credentials is available to developers.
+  Verify current pricing directly with Open Dental. This is separate from Open
+  Dental's core practice-management software licensing/support fees.
+sources:
+- https://www.opendental.com/site/apispecification.html
+- https://www.opendental.com/site/apisetup.html
+- https://www.opendental.com/site/apifees.html
+- https://www.opendental.com/site/apideveloperportal.html
+plans:
+- id: opendental-api-developer
+  name: API Access (Per Location)
+  type: paid
+  description: >-
+    Approved third-party access to a customer's Open Dental data via the
+    cloud-hosted REST API. Requires an Open Dental-issued Developer Key plus an
+    enabled per-customer Customer Key. Billed per location; billing begins when
+    a key is enabled and stops when it is disabled.
+  entries:
+  - label: Per-Location API Access
+    name: per_location_api
+    type: flat
+    metric: location
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: per-location fee (contact Open Dental; not publicly published)
+    userMultiplied: true
+  elements:
+  - name: Cloud-Hosted REST API
+  - name: Developer Key + Customer Key Auth
+  - name: 130+ Resource Groups
+  - name: Permission-Scoped Access
+- id: opendental-local-api
+  name: Local API / API Service
+  type: paid
+  description: >-
+    Requests made at the dental office workstation directly against the running
+    Open Dental program (Local API) or the API Service, without traveling
+    through Open Dental's servers. Not throttled by Open Dental's cloud limits.
+  entries:
+  - label: Local API Usage
+    name: local_api
+    type: flat
+    metric: location
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact Open Dental (not publicly published)
+    userMultiplied: true
+  elements:
+  - name: On-Premises Access
+  - name: No Cloud Throttling
+  - name: Same Resource Surface
+- id: opendental-api-test
+  name: Developer Test Database
+  type: free
+  description: >-
+    Free shared test database and test credentials that developers use to build
+    and validate against the same base URL before going live with a customer.
+  entries:
+  - label: Test Database Access
+    name: test_db
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (test/sandbox)
+    userMultiplied: false
+  elements:
+  - name: Shared Test Data
+  - name: Same Base URL
+  - name: Evaluation Only
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

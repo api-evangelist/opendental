@@ -1,0 +1,99 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Open Dental
+providerId: opendental
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Dental
+- Practice Management
+- Healthcare
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Open Dental API spend. Open Dental's REST API is billed per
+  location: a Developer Key plus a per-customer Customer Key must be enabled
+  before charges apply, and billing stops when a key is disabled. The dominant
+  cost driver is therefore the number of active locations / enabled customer
+  keys rather than per-request metering. Open Dental does not publish public
+  per-location dollar amounts and negotiates pricing with high-volume
+  developers. A free test database exists for pre-production development. The
+  Local API / API Service option runs at the practice workstation and is not
+  metered or throttled through Open Dental's cloud, shifting cost to on-premises
+  infrastructure rather than a per-call cloud charge.
+notes: >-
+  Per-location rates are not reconciled here; verify with Open Dental. Cost
+  optimization centers on enabling keys only for active locations and disabling
+  unused keys promptly (billing halts on disable), plus choosing the Local API
+  where volume would otherwise strain cloud throttling limits.
+sources:
+- https://www.opendental.com/site/apispecification.html
+- https://www.opendental.com/site/apisetup.html
+- https://www.opendental.com/site/apifees.html
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Open Dental Software
+serviceCategory: Healthcare and Practice Management
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Open Dental API
+  ServiceCategory: Healthcare and Practice Management
+  ProviderName: Open Dental Software
+  PublisherName: Open Dental Software
+  InvoiceIssuerName: Open Dental Software
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription
+meters:
+- name: active_locations
+  description: Number of locations with an enabled API Customer Key; the primary per-location billing driver.
+  unit: locations
+  aggregation: sum
+  dimensions:
+  - customer
+  - developer_key
+- name: enabled_customer_keys
+  description: Count of enabled per-customer Customer Keys; billing starts on enable and stops on disable.
+  unit: keys
+  aggregation: sum
+  dimensions:
+  - customer
+- name: api_requests
+  description: Volume of cloud REST API requests; not directly billed but bounded by permission-tier throttling.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - developer_key
+  - customer
+- name: local_api_usage
+  description: Requests handled by the un-throttled Local API / API Service at the practice workstation (on-premises cost, no cloud charge).
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - location
+principles:
+- name: Visibility
+  description: Track which locations have enabled Customer Keys and which Developer Keys they map to; that count is what you are billed on.
+- name: Allocation
+  description: Map enabled keys to specific customers/locations so per-location API cost is attributed to the right practice or client.
+- name: Optimization
+  description: Disable unused Customer Keys promptly (billing halts on disable), request only the permission tier you need, and use the un-throttled Local API for high-volume single-location workloads.
+- name: Accountability
+  description: Review active-location and enabled-key counts monthly against contracted per-location pricing; negotiate volume pricing with Open Dental when scaling across many practices.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
