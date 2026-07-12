@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/opendental-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: odfhirAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Send "ODFHIR {DeveloperKey}/{CustomerKey}" - the per-application Developer Key
+    issued by Open Dental Vendor Relations combined with the per-customer Customer Key. Some
+    endpoints also accept HTTP Basic auth with the Developer Key as username and the Customer
+    Key as password.
+  sources:
+  - openapi/opendental-openapi.yml

@@ -276,6 +276,10 @@ apis:
     administrative forms (consent forms, patient forms, treatment plans) that
     Open Dental renders and stores per patient.
 common:
+- type: DomainSecurity
+  url: security/opendental-domain-security.yml
+- type: Authentication
+  url: authentication/opendental-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/OpenDental
 - type: LinkedIn
@@ -290,6 +294,8 @@ common:
   url: rate-limits/opendental-rate-limits.yml
 - type: FinOps
   url: finops/opendental-finops.yml
+- type: Blog
+  url: https://opendental.blog/feed/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
