@@ -1,0 +1,13 @@
+{
+  "repo": "opendental",
+  "feeds": [
+    {
+      "source": "https://opendental.blog/feed/",
+      "feed_url": "https://opendental.blog/feed/",
+      "title": "Open Dental Blog",
+      "saved": 1
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 7
+}
