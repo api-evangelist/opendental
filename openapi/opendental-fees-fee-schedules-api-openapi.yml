@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: Open Dental Accounts & Ledger Fees & Fee Schedules API
+  description: 'REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as "Authorization: ODFHIR {DeveloperKey}/{CustomerKey}". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental''s standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.'
+  version: v1
+  contact:
+    name: Open Dental Software Vendor Relations
+    url: https://www.opendental.com/site/apispecification.html
+    email: vendor.relations@opendental.com
+  license:
+    name: Open Dental (proprietary; source viewable under Open Dental license)
+    url: https://www.opendental.com/site/sourcecode.html
+servers:
+- url: https://api.opendental.com/api/v1
+  description: Open Dental cloud-hosted API service (headquarters)
+security:
+- odfhirAuth: []
+tags:
+- name: Fees & Fee Schedules
+  description: MODELED. Procedure fees and fee schedules.
+paths:
+  /fees:
+    get:
+      tags:
+      - Fees & Fee Schedules
+      summary: List fees
+      description: MODELED. Procedure fees within a fee schedule.
+      parameters:
+      - name: FeeSched
+        in: query
+        schema:
+          type: integer
+      - name: ClinicNum
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          $ref: '#/components/responses/Ok'
+    post:
+      tags:
+      - Fees & Fee Schedules
+      summary: Create a fee
+      description: MODELED.
+      requestBody:
+        $ref: '#/components/requestBodies/Generic'
+      responses:
+        '201':
+          $ref: '#/components/responses/Created'
+  /feescheds:
+    get:
+      tags:
+      - Fees & Fee Schedules
+      summary: List fee schedules
+      description: MODELED.
+      responses:
+        '200':
+          $ref: '#/components/responses/Ok'
+components:
+  responses:
+    Created:
+      description: Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    Ok:
+      description: Success. Returns one item or an array of items.
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              additionalProperties: true
+            - type: array
+              items:
+                type: object
+                additionalProperties: true
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+  securitySchemes:
+    odfhirAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Send "ODFHIR {DeveloperKey}/{CustomerKey}" - the per-application Developer Key issued by Open Dental Vendor Relations combined with the per-customer Customer Key. Some endpoints also accept HTTP Basic auth with the Developer Key as username and the Customer Key as password.
