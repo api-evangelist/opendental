@@ -1,0 +1,798 @@
+openapi: 3.0.3
+info:
+  title: Open Dental API
+  description: >-
+    REST API for Open Dental dental practice management software. The web
+    service is hosted at Open Dental headquarters and lets approved third-party
+    applications read and write practice data on behalf of Open Dental
+    customers. Requests authenticate with a per-application Developer Key and a
+    per-customer Customer Key, sent together in a single header as
+    "Authorization: ODFHIR {DeveloperKey}/{CustomerKey}". The full published
+    specification documents 130+ resource groups; this document models a
+    representative, load-bearing subset. The paths under Patients,
+    Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments
+    are grounded in the published per-resource reference pages and are marked
+    CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee
+    Schedules, Recalls, Documents, Medications & Prescriptions, Referrals,
+    Sheets) follow Open Dental's standard REST CRUD convention and are marked
+    MODELED - verify exact paths and fields against the live spec before use.
+    A separate local API Service (talks to the on-premises Open Dental program
+    without routing through Open Dental servers) and a FHIR interface also
+    exist and are out of scope for this document.
+  version: v1
+  contact:
+    name: Open Dental Software Vendor Relations
+    url: https://www.opendental.com/site/apispecification.html
+    email: vendor.relations@opendental.com
+  license:
+    name: Open Dental (proprietary; source viewable under Open Dental license)
+    url: https://www.opendental.com/site/sourcecode.html
+servers:
+  - url: https://api.opendental.com/api/v1
+    description: Open Dental cloud-hosted API service (headquarters)
+security:
+  - odfhirAuth: []
+tags:
+  - name: Patients
+    description: CONFIRMED. Patient demographic records.
+  - name: Appointments
+    description: CONFIRMED. Scheduling, slots, and WebSched.
+  - name: Providers
+    description: CONFIRMED. Dentists, hygienists, and billing entities.
+  - name: Procedures
+    description: CONFIRMED. ProcedureLogs, insurance history, and group notes.
+  - name: Claims
+    description: CONFIRMED. Insurance claims and claim workflow.
+  - name: Payments
+    description: CONFIRMED. Patient payments, refunds, and split reallocation.
+  - name: Accounts & Ledger
+    description: MODELED. Adjustments and payment splits on the patient ledger.
+  - name: Fees & Fee Schedules
+    description: MODELED. Procedure fees and fee schedules.
+  - name: Recalls
+    description: MODELED. Hygiene / continuing-care recalls.
+  - name: Documents
+    description: MODELED. Files and images attached to a patient.
+  - name: Medications & Prescriptions
+    description: MODELED. Medication catalog, patient meds, and prescriptions.
+  - name: Referrals
+    description: MODELED. Referral sources and attachments.
+  - name: Sheets
+    description: MODELED. Configurable clinical and administrative forms.
+paths:
+  # ---------------- Patients (CONFIRMED) ----------------
+  /patients/{PatNum}:
+    get:
+      tags: [Patients]
+      summary: Get a single patient
+      description: CONFIRMED. Retrieves one patient by PatNum.
+      parameters:
+        - $ref: '#/components/parameters/PatNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      tags: [Patients]
+      summary: Update a patient
+      description: CONFIRMED. Updates an existing patient. Patients cannot be deleted via the API.
+      parameters:
+        - $ref: '#/components/parameters/PatNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /patients/Simple:
+    get:
+      tags: [Patients]
+      summary: List patients (Simple)
+      description: >-
+        CONFIRMED. Fast listing of patients with optional filters. Faster than
+        the full patient search.
+      parameters:
+        - { name: LName, in: query, schema: { type: string } }
+        - { name: FName, in: query, schema: { type: string } }
+        - { name: PatStatus, in: query, schema: { type: string } }
+        - { name: Birthdate, in: query, schema: { type: string, format: date } }
+        - { name: ClinicNum, in: query, schema: { type: integer } }
+        - { name: DateTStamp, in: query, schema: { type: string } }
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /patients:
+    get:
+      tags: [Patients]
+      summary: Search patients
+      description: >-
+        CONFIRMED. Searches patients using Patient Select-style logic with many
+        optional criteria.
+      parameters:
+        - { name: LName, in: query, schema: { type: string } }
+        - { name: FName, in: query, schema: { type: string } }
+        - { name: Phone, in: query, schema: { type: string } }
+        - { name: Address, in: query, schema: { type: string } }
+        - { name: hideInactive, in: query, schema: { type: boolean } }
+        - { name: SSN, in: query, schema: { type: string } }
+        - { name: ChartNumber, in: query, schema: { type: string } }
+        - { name: Birthdate, in: query, schema: { type: string, format: date } }
+        - { name: Email, in: query, schema: { type: string } }
+        - { name: clinicNums, in: query, schema: { type: string } }
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Patients]
+      summary: Create a patient
+      description: CONFIRMED. Creates a new patient.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+
+  # ---------------- Appointments (CONFIRMED) ----------------
+  /appointments/{AptNum}:
+    get:
+      tags: [Appointments]
+      summary: Get a single appointment
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/AptNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      tags: [Appointments]
+      summary: Update an appointment
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/AptNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /appointments:
+    get:
+      tags: [Appointments]
+      summary: List appointments
+      description: CONFIRMED. Retrieves multiple appointments with optional filters.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+        - { name: AptStatus, in: query, schema: { type: string } }
+        - { name: ClinicNum, in: query, schema: { type: integer } }
+        - { name: ProvNum, in: query, schema: { type: integer } }
+        - { name: dateStart, in: query, schema: { type: string, format: date } }
+        - { name: dateEnd, in: query, schema: { type: string, format: date } }
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Appointments]
+      summary: Create an appointment
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /appointments/ASAP:
+    get:
+      tags: [Appointments]
+      summary: List ASAP appointments
+      description: CONFIRMED.
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /appointments/Slots:
+    get:
+      tags: [Appointments]
+      summary: Find available appointment slots
+      description: CONFIRMED.
+      parameters:
+        - { name: date, in: query, schema: { type: string, format: date } }
+        - { name: ProvNum, in: query, schema: { type: integer } }
+        - { name: lengthMinutes, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /appointments/SlotsWebSched:
+    get:
+      tags: [Appointments]
+      summary: Find WebSched available slots
+      description: CONFIRMED.
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /appointments/WebSched:
+    get:
+      tags: [Appointments]
+      summary: List WebSched appointments
+      description: CONFIRMED.
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Appointments]
+      summary: Create a WebSched appointment
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /appointments/Planned:
+    post:
+      tags: [Appointments]
+      summary: Create a planned appointment
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /appointments/SchedulePlanned:
+    post:
+      tags: [Appointments]
+      summary: Schedule an existing planned appointment
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /appointments/{AptNum}/Break:
+    put:
+      tags: [Appointments]
+      summary: Break an appointment
+      description: CONFIRMED. Marks an appointment as broken.
+      parameters:
+        - $ref: '#/components/parameters/AptNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /appointments/{AptNum}/Note:
+    put:
+      tags: [Appointments]
+      summary: Append to appointment note
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/AptNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /appointments/{AptNum}/Confirm:
+    put:
+      tags: [Appointments]
+      summary: Update confirmation status
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/AptNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Providers (CONFIRMED) ----------------
+  /providers/{ProvNum}:
+    get:
+      tags: [Providers]
+      summary: Get a single provider
+      description: CONFIRMED (v24.4.17+).
+      parameters:
+        - $ref: '#/components/parameters/ProvNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      tags: [Providers]
+      summary: Update a provider
+      description: CONFIRMED (v22.1+).
+      parameters:
+        - $ref: '#/components/parameters/ProvNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+  /providers:
+    get:
+      tags: [Providers]
+      summary: List providers
+      description: CONFIRMED (v21.1+). Optional filtering by ClinicNum or DateTStamp.
+      parameters:
+        - { name: ClinicNum, in: query, schema: { type: integer } }
+        - { name: DateTStamp, in: query, schema: { type: string } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Providers]
+      summary: Create a provider
+      description: CONFIRMED (v21.4+). Creates a provider, billing entity, or dummy provider.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+
+  # ---------------- Procedures / ProcedureLogs (CONFIRMED) ----------------
+  /procedurelogs/{ProcNum}:
+    get:
+      tags: [Procedures]
+      summary: Get a procedure log
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ProcNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      tags: [Procedures]
+      summary: Update a procedure log
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ProcNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    delete:
+      tags: [Procedures]
+      summary: Delete a procedure log
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ProcNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /procedurelogs:
+    get:
+      tags: [Procedures]
+      summary: List procedure logs
+      description: CONFIRMED. Retrieves multiple procedure logs with optional filters.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+        - { name: ProcStatus, in: query, schema: { type: string } }
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Procedures]
+      summary: Create a procedure log
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /procedurelogs/InsuranceHistory:
+    get:
+      tags: [Procedures]
+      summary: Get insurance treatment history
+      description: CONFIRMED. Previous treatment dates for a patient's insurance plan.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Procedures]
+      summary: Create an insurance history entry
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /procedurelogs/GroupNotes:
+    get:
+      tags: [Procedures]
+      summary: Get group notes
+      description: CONFIRMED. Group notes for a patient's procedures.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /procedurelogs/GroupNote:
+    post:
+      tags: [Procedures]
+      summary: Create a group note
+      description: CONFIRMED. Creates a group note across multiple procedures.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /procedurelogs/{ProcNum}/GroupNote:
+    put:
+      tags: [Procedures]
+      summary: Update a group note
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ProcNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    delete:
+      tags: [Procedures]
+      summary: Delete a group note procedure
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ProcNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Claims (CONFIRMED) ----------------
+  /claims/{ClaimNum}:
+    get:
+      tags: [Claims]
+      summary: Get a claim
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ClaimNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      tags: [Claims]
+      summary: Update a claim
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ClaimNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    delete:
+      tags: [Claims]
+      summary: Delete a claim
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ClaimNum'
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /claims:
+    get:
+      tags: [Claims]
+      summary: List claims
+      description: CONFIRMED.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+        - { name: ClaimStatus, in: query, schema: { type: string } }
+        - { name: ClaimType, in: query, schema: { type: string } }
+        - { name: PlanNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Claims]
+      summary: Create a claim
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /claims/{ClaimNum}/Status:
+    put:
+      tags: [Claims]
+      summary: Update claim status
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ClaimNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /claims/{ClaimNum}/Split:
+    put:
+      tags: [Claims]
+      summary: Split a claim
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/ClaimNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Payments (CONFIRMED) ----------------
+  /payments:
+    get:
+      tags: [Payments]
+      summary: List payments
+      description: CONFIRMED. Optional filtering by PatNum, PayType, DateEntry.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+        - { name: PayType, in: query, schema: { type: integer } }
+        - { name: DateEntry, in: query, schema: { type: string, format: date } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Payments]
+      summary: Create a payment
+      description: CONFIRMED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /payments/Refund:
+    post:
+      tags: [Payments]
+      summary: Create a refund
+      description: CONFIRMED. Creates a refund payment for an existing payment.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /payments/{PayNum}:
+    put:
+      tags: [Payments]
+      summary: Update a payment
+      description: CONFIRMED.
+      parameters:
+        - $ref: '#/components/parameters/PayNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /payments/{PayNum}/Partial:
+    put:
+      tags: [Payments]
+      summary: Reallocate payment splits
+      description: CONFIRMED. Reallocates a payment's splits to procedures or pay-plan charges.
+      parameters:
+        - $ref: '#/components/parameters/PayNum'
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Accounts & Ledger (MODELED) ----------------
+  /adjustments:
+    get:
+      tags: [Accounts & Ledger]
+      summary: List adjustments
+      description: MODELED. Ledger adjustments on patient accounts.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Accounts & Ledger]
+      summary: Create an adjustment
+      description: MODELED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /adjustments/{AdjNum}:
+    put:
+      tags: [Accounts & Ledger]
+      summary: Update an adjustment
+      description: MODELED.
+      parameters:
+        - { name: AdjNum, in: path, required: true, schema: { type: integer } }
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /paysplits:
+    get:
+      tags: [Accounts & Ledger]
+      summary: List payment splits
+      description: MODELED.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Fees & Fee Schedules (MODELED) ----------------
+  /fees:
+    get:
+      tags: [Fees & Fee Schedules]
+      summary: List fees
+      description: MODELED. Procedure fees within a fee schedule.
+      parameters:
+        - { name: FeeSched, in: query, schema: { type: integer } }
+        - { name: ClinicNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Fees & Fee Schedules]
+      summary: Create a fee
+      description: MODELED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /feescheds:
+    get:
+      tags: [Fees & Fee Schedules]
+      summary: List fee schedules
+      description: MODELED.
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Recalls (MODELED) ----------------
+  /recalls:
+    get:
+      tags: [Recalls]
+      summary: List recalls
+      description: MODELED.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /recalls/{RecallNum}:
+    put:
+      tags: [Recalls]
+      summary: Update a recall
+      description: MODELED.
+      parameters:
+        - { name: RecallNum, in: path, required: true, schema: { type: integer } }
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Documents (MODELED) ----------------
+  /documents:
+    get:
+      tags: [Documents]
+      summary: List documents
+      description: MODELED. Files attached to a patient.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Documents]
+      summary: Upload a document
+      description: MODELED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /documents/{DocNum}:
+    get:
+      tags: [Documents]
+      summary: Download a document
+      description: MODELED.
+      parameters:
+        - { name: DocNum, in: path, required: true, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Medications & Prescriptions (MODELED) ----------------
+  /medications:
+    get:
+      tags: [Medications & Prescriptions]
+      summary: List medications catalog
+      description: MODELED.
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+  /medicationpats:
+    get:
+      tags: [Medications & Prescriptions]
+      summary: List a patient's medications
+      description: MODELED.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Medications & Prescriptions]
+      summary: Add a medication to a patient
+      description: MODELED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /rxpats:
+    get:
+      tags: [Medications & Prescriptions]
+      summary: List prescriptions
+      description: MODELED.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Medications & Prescriptions]
+      summary: Create a prescription
+      description: MODELED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+
+  # ---------------- Referrals (MODELED) ----------------
+  /referrals:
+    get:
+      tags: [Referrals]
+      summary: List referral sources
+      description: MODELED.
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Referrals]
+      summary: Create a referral source
+      description: MODELED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+  /refattaches:
+    get:
+      tags: [Referrals]
+      summary: List referral attachments
+      description: MODELED. Links a referral to a patient or procedure.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+
+  # ---------------- Sheets (MODELED) ----------------
+  /sheets:
+    get:
+      tags: [Sheets]
+      summary: List sheets
+      description: MODELED. Clinical and administrative forms per patient.
+      parameters:
+        - { name: PatNum, in: query, schema: { type: integer } }
+      responses:
+        '200': { $ref: '#/components/responses/Ok' }
+    post:
+      tags: [Sheets]
+      summary: Create a sheet
+      description: MODELED.
+      requestBody: { $ref: '#/components/requestBodies/Generic' }
+      responses:
+        '201': { $ref: '#/components/responses/Created' }
+components:
+  securitySchemes:
+    odfhirAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Send "ODFHIR {DeveloperKey}/{CustomerKey}" - the per-application
+        Developer Key issued by Open Dental Vendor Relations combined with the
+        per-customer Customer Key. Some endpoints also accept HTTP Basic auth
+        with the Developer Key as username and the Customer Key as password.
+  parameters:
+    PatNum:
+      name: PatNum
+      in: path
+      required: true
+      description: Primary key of the patient.
+      schema: { type: integer }
+    AptNum:
+      name: AptNum
+      in: path
+      required: true
+      description: Primary key of the appointment.
+      schema: { type: integer }
+    ProvNum:
+      name: ProvNum
+      in: path
+      required: true
+      description: Primary key of the provider.
+      schema: { type: integer }
+    ProcNum:
+      name: ProcNum
+      in: path
+      required: true
+      description: Primary key of the procedure log.
+      schema: { type: integer }
+    ClaimNum:
+      name: ClaimNum
+      in: path
+      required: true
+      description: Primary key of the claim.
+      schema: { type: integer }
+    PayNum:
+      name: PayNum
+      in: path
+      required: true
+      description: Primary key of the payment.
+      schema: { type: integer }
+    Offset:
+      name: Offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema: { type: integer, default: 0 }
+  requestBodies:
+    Generic:
+      description: >-
+        Resource fields as a JSON object. See the per-resource reference page
+        on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+  responses:
+    Ok:
+      description: Success. Returns one item or an array of items.
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - type: object
+                additionalProperties: true
+              - type: array
+                items:
+                  type: object
+                  additionalProperties: true
+    Created:
+      description: >-
+        Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
+    NotFound:
+      description: The requested resource was not found.

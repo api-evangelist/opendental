@@ -1,0 +1,38 @@
+{
+  "provider": "opendental",
+  "sources": [
+    "opendental-accounts-ledger-api-openapi.yml",
+    "opendental-appointments-api-openapi.yml",
+    "opendental-claims-api-openapi.yml",
+    "opendental-documents-api-openapi.yml",
+    "opendental-fees-fee-schedules-api-openapi.yml",
+    "opendental-medications-prescriptions-api-openapi.yml",
+    "opendental-patients-api-openapi.yml",
+    "opendental-payments-api-openapi.yml",
+    "opendental-procedures-api-openapi.yml",
+    "opendental-providers-api-openapi.yml",
+    "opendental-recalls-api-openapi.yml",
+    "opendental-referrals-api-openapi.yml",
+    "opendental-sheets-api-openapi.yml"
+  ],
+  "outputs": [
+    "opendental-accounts-ledger-api-openapi.yml",
+    "opendental-appointments-api-openapi.yml",
+    "opendental-claims-api-openapi.yml",
+    "opendental-documents-api-openapi.yml",
+    "opendental-fees-fee-schedules-api-openapi.yml",
+    "opendental-medications-prescriptions-api-openapi.yml",
+    "opendental-patients-api-openapi.yml",
+    "opendental-payments-api-openapi.yml",
+    "opendental-procedures-api-openapi.yml",
+    "opendental-providers-api-openapi.yml",
+    "opendental-recalls-api-openapi.yml",
+    "opendental-referrals-api-openapi.yml",
+    "opendental-sheets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
