@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Recalls API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recalls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List recalls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/recalls",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "Update a recall",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/recalls/:RecallNum",
+            "params": [
+              {
+                "name": "RecallNum",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

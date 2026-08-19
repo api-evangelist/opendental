@@ -1,0 +1,307 @@
+{
+  "item": [
+    {
+      "id": "7796f905-3845-409d-840d-00a2dca5d9d9",
+      "name": "Referrals",
+      "description": {
+        "content": "MODELED. Referral sources and attachments.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f27a4b21-657e-47e8-b746-9f987ec6c9e4",
+          "name": "List referral sources",
+          "request": {
+            "name": "List referral sources",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b73a7d44-089d-452d-a7ea-4e3ed7fc5f4f",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "referrals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0ffe7cd-194c-422c-8e68-6b3ab83fc428",
+          "name": "Create a referral source",
+          "request": {
+            "name": "Create a referral source",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 398.072770192921\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "739b9fd7-aa0e-4908-bec3-475bc54b0a63",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "referrals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2bd5bf54-1c59-4532-a7b5-f98820f1b5e9",
+          "name": "List referral attachments",
+          "request": {
+            "name": "List referral attachments",
+            "description": {
+              "content": "MODELED. Links a referral to a patient or procedure.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refattaches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfe03bab-5a66-446b-8c14-928f2d771aef",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refattaches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opendental.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a27296ce-3f4e-4f5a-aafa-f063bb82c089",
+    "name": "Open Dental Accounts & Ledger Referrals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as \"Authorization: ODFHIR {DeveloperKey}/{CustomerKey}\". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental's standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.\n\nContact Support:\n Name: Open Dental Software Vendor Relations\n Email: vendor.relations@opendental.com",
+      "type": "text/plain"
+    }
+  }
+}

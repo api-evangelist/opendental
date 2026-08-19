@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Referrals API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Referrals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List referral sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/referrals"
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "Create a referral source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/referrals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "List referral attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/refattaches",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED. Links a referral to a patient or procedure."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

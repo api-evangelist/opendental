@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Procedures API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Procedures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a procedure log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum",
+            "params": [
+              {
+                "name": "ProcNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the procedure log."
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Update a procedure log",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum",
+            "params": [
+              {
+                "name": "ProcNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the procedure log."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Delete a procedure log",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum",
+            "params": [
+              {
+                "name": "ProcNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the procedure log."
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "List procedure logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/procedurelogs",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ProcStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Retrieves multiple procedure logs with optional filters."
+        },
+        {
+          "info": {
+            "name": "Create a procedure log",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/procedurelogs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Get insurance treatment history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/InsuranceHistory",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Previous treatment dates for a patient's insurance plan."
+        },
+        {
+          "info": {
+            "name": "Create an insurance history entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/InsuranceHistory",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Get group notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/GroupNotes",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Group notes for a patient's procedures."
+        },
+        {
+          "info": {
+            "name": "Create a group note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/GroupNote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED. Creates a group note across multiple procedures."
+        },
+        {
+          "info": {
+            "name": "Update a group note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum/GroupNote",
+            "params": [
+              {
+                "name": "ProcNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the procedure log."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Delete a group note procedure",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opendental.com/api/v1/procedurelogs/:ProcNum/GroupNote",
+            "params": [
+              {
+                "name": "ProcNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the procedure log."
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

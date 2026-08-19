@@ -1,0 +1,487 @@
+{
+  "item": [
+    {
+      "id": "94042787-39ee-444a-9f32-e78aa33ec710",
+      "name": "Medications & Prescriptions",
+      "description": {
+        "content": "MODELED. Medication catalog, patient meds, and prescriptions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18230922-fc40-4619-8f29-7cddbc332dcd",
+          "name": "List medications catalog",
+          "request": {
+            "name": "List medications catalog",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "medications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9d0ecc7-d582-46c0-9acc-389b2a524308",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "medications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 1843.6966215590433\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a255e005-513c-450c-83c9-687b49bfb7ab",
+          "name": "List a patient's medications",
+          "request": {
+            "name": "List a patient's medications",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "medicationpats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2beb683-130f-4b93-9ad1-39557fac21fa",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "medicationpats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 1843.6966215590433\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4677a51b-c934-4e95-92c0-ecbfdea8bec7",
+          "name": "Add a medication to a patient",
+          "request": {
+            "name": "Add a medication to a patient",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "medicationpats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 3051\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb5761cc-2b49-4973-bcc0-86fee2f85a54",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "medicationpats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 1843.6966215590433\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "891f8cfd-b0e6-4b0d-8178-e68746bd7e0d",
+          "name": "List prescriptions",
+          "request": {
+            "name": "List prescriptions",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rxpats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3decb8d2-be4a-418e-aea2-767c622cf3ca",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rxpats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 1843.6966215590433\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0daede5c-61ef-4ccc-a236-0cd2bc5430b5",
+          "name": "Create a prescription",
+          "request": {
+            "name": "Create a prescription",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rxpats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 3051\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d94397c5-33aa-4d3d-804e-9220a89a3670",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rxpats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 1843.6966215590433\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opendental.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "eeab4b47-f2d3-4795-b998-cf21e7473078",
+    "name": "Open Dental Accounts & Ledger Medications & Prescriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as \"Authorization: ODFHIR {DeveloperKey}/{CustomerKey}\". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental's standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.\n\nContact Support:\n Name: Open Dental Software Vendor Relations\n Email: vendor.relations@opendental.com",
+      "type": "text/plain"
+    }
+  }
+}

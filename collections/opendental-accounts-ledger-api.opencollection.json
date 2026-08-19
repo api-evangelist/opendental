@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts & Ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List adjustments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/adjustments",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED. Ledger adjustments on patient accounts."
+        },
+        {
+          "info": {
+            "name": "Create an adjustment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/adjustments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "Update an adjustment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/adjustments/:AdjNum",
+            "params": [
+              {
+                "name": "AdjNum",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "List payment splits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/paysplits",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

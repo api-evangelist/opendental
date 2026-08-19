@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Providers API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a single provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/providers/:ProvNum",
+            "params": [
+              {
+                "name": "ProvNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the provider."
+              }
+            ]
+          },
+          "docs": "CONFIRMED (v24.4.17+)."
+        },
+        {
+          "info": {
+            "name": "Update a provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/providers/:ProvNum",
+            "params": [
+              {
+                "name": "ProvNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the provider."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED (v22.1+)."
+        },
+        {
+          "info": {
+            "name": "List providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/providers",
+            "params": [
+              {
+                "name": "ClinicNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DateTStamp",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CONFIRMED (v21.1+). Optional filtering by ClinicNum or DateTStamp."
+        },
+        {
+          "info": {
+            "name": "Create a provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/providers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED (v21.4+). Creates a provider, billing entity, or dummy provider."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Claims API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/claims/:ClaimNum",
+            "params": [
+              {
+                "name": "ClaimNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the claim."
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Update a claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/claims/:ClaimNum",
+            "params": [
+              {
+                "name": "ClaimNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the claim."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Delete a claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opendental.com/api/v1/claims/:ClaimNum",
+            "params": [
+              {
+                "name": "ClaimNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the claim."
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "List claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/claims",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ClaimStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ClaimType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PlanNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Create a claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/claims",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Update claim status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/claims/:ClaimNum/Status",
+            "params": [
+              {
+                "name": "ClaimNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the claim."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Split a claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/claims/:ClaimNum/Split",
+            "params": [
+              {
+                "name": "ClaimNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the claim."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

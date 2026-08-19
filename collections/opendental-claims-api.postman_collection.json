@@ -1,0 +1,827 @@
+{
+  "item": [
+    {
+      "id": "37bdbd91-4ef5-4547-bcef-710c3169d278",
+      "name": "Claims",
+      "description": {
+        "content": "CONFIRMED. Insurance claims and claim workflow.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dca83808-bfd2-480f-ade9-16a3c0f81787",
+          "name": "Get a claim",
+          "request": {
+            "name": "Get a claim",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims",
+                ":ClaimNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ClaimNum",
+                  "description": "(Required) Primary key of the claim."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "294c0401-ec57-406d-8f27-a7412d255889",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    ":ClaimNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ClaimNum",
+                      "description": "(Required) Primary key of the claim."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88995cd9-68e4-419d-894a-70cc5795b006",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    ":ClaimNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ClaimNum",
+                      "description": "(Required) Primary key of the claim."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc0586f9-40e8-4bb3-b305-9549de7ac91f",
+          "name": "Update a claim",
+          "request": {
+            "name": "Update a claim",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims",
+                ":ClaimNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ClaimNum",
+                  "description": "(Required) Primary key of the claim."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 8971.844449379734,\n  \"key_1\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1e061a4-ff41-4034-8655-b21983f07032",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    ":ClaimNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ClaimNum",
+                      "description": "(Required) Primary key of the claim."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3df7b583-4260-4b2d-a8a1-bebf6f213169",
+          "name": "Delete a claim",
+          "request": {
+            "name": "Delete a claim",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims",
+                ":ClaimNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ClaimNum",
+                  "description": "(Required) Primary key of the claim."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e5d33f9-431b-425c-9608-96684411aaea",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    ":ClaimNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ClaimNum",
+                      "description": "(Required) Primary key of the claim."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ce519f2-4402-4e82-87f5-098fc2f7215d",
+          "name": "List claims",
+          "request": {
+            "name": "List claims",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ClaimStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ClaimType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PlanNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dce22d15-af1e-43b1-be7c-d7df4ba5f8b1",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ClaimStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ClaimType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "PlanNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c27d526b-254f-444c-9669-30ee295c26eb",
+          "name": "Create a claim",
+          "request": {
+            "name": "Create a claim",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 8971.844449379734,\n  \"key_1\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a8e61889-fd1c-484e-9ed1-ee8c8ea8a975",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c6c6f9c-53ca-45c6-a5ad-b4cf2dbf402f",
+          "name": "Update claim status",
+          "request": {
+            "name": "Update claim status",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims",
+                ":ClaimNum",
+                "Status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ClaimNum",
+                  "description": "(Required) Primary key of the claim."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 8971.844449379734,\n  \"key_1\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3b8abe8-187d-4a93-8011-9d9e79b0a5f9",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    ":ClaimNum",
+                    "Status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ClaimNum",
+                      "description": "(Required) Primary key of the claim."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "510b712a-4451-47ea-b232-cbd0c48094cf",
+          "name": "Split a claim",
+          "request": {
+            "name": "Split a claim",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "claims",
+                ":ClaimNum",
+                "Split"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ClaimNum",
+                  "description": "(Required) Primary key of the claim."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 8971.844449379734,\n  \"key_1\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9bc9207-968e-424d-8379-47ebb7945a69",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "claims",
+                    ":ClaimNum",
+                    "Split"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ClaimNum",
+                      "description": "(Required) Primary key of the claim."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opendental.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3eab99e6-faeb-440c-8cac-8bf7068b90a5",
+    "name": "Open Dental Accounts & Ledger Claims API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as \"Authorization: ODFHIR {DeveloperKey}/{CustomerKey}\". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental's standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.\n\nContact Support:\n Name: Open Dental Software Vendor Relations\n Email: vendor.relations@opendental.com",
+      "type": "text/plain"
+    }
+  }
+}

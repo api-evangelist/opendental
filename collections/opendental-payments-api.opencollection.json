@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Payments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/payments",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PayType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DateEntry",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Optional filtering by PatNum, PayType, DateEntry."
+        },
+        {
+          "info": {
+            "name": "Create a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Create a refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/payments/Refund",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED. Creates a refund payment for an existing payment."
+        },
+        {
+          "info": {
+            "name": "Update a payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/payments/:PayNum",
+            "params": [
+              {
+                "name": "PayNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the payment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Reallocate payment splits",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/payments/:PayNum/Partial",
+            "params": [
+              {
+                "name": "PayNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the payment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED. Reallocates a payment's splits to procedures or pay-plan charges."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

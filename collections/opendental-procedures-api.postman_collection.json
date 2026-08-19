@@ -1,0 +1,1174 @@
+{
+  "item": [
+    {
+      "id": "eb7413a9-f719-4d42-98dc-60df681c3e4d",
+      "name": "Procedures",
+      "description": {
+        "content": "CONFIRMED. ProcedureLogs, insurance history, and group notes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4697b86-195c-470a-89a3-14c4a394bbf0",
+          "name": "Get a procedure log",
+          "request": {
+            "name": "Get a procedure log",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                ":ProcNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ProcNum",
+                  "description": "(Required) Primary key of the procedure log."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16265294-b9a0-47b7-aafc-9711d594ee39",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    ":ProcNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ProcNum",
+                      "description": "(Required) Primary key of the procedure log."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19dbd34b-5de4-43b6-9bc2-6f8f6b3e6693",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    ":ProcNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ProcNum",
+                      "description": "(Required) Primary key of the procedure log."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e77dd2b-08aa-45eb-a6e2-5d792bf566d6",
+          "name": "Update a procedure log",
+          "request": {
+            "name": "Update a procedure log",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                ":ProcNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ProcNum",
+                  "description": "(Required) Primary key of the procedure log."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2172,\n  \"key_1\": 700,\n  \"key_2\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e88c700-264e-47d7-b216-28438e6368a8",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    ":ProcNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ProcNum",
+                      "description": "(Required) Primary key of the procedure log."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aae59cac-5e6e-4e0b-82e4-bc3a1dd699f7",
+          "name": "Delete a procedure log",
+          "request": {
+            "name": "Delete a procedure log",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                ":ProcNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ProcNum",
+                  "description": "(Required) Primary key of the procedure log."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9365413-664b-4f85-b965-becd924d5a76",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    ":ProcNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ProcNum",
+                      "description": "(Required) Primary key of the procedure log."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72a600bc-581d-45d1-b4ee-9bf9093c21a6",
+          "name": "List procedure logs",
+          "request": {
+            "name": "List procedure logs",
+            "description": {
+              "content": "CONFIRMED. Retrieves multiple procedure logs with optional filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ProcStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59e47190-f70e-498b-b079-7d6ce78f8173",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ProcStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3de96381-6c00-4543-8eaa-0835dc059152",
+          "name": "Create a procedure log",
+          "request": {
+            "name": "Create a procedure log",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2172,\n  \"key_1\": 700,\n  \"key_2\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7683492c-b688-4f85-9e75-cd5b489e14ba",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9f0812e-3091-421f-8e1a-1d6cc72887c8",
+          "name": "Get insurance treatment history",
+          "request": {
+            "name": "Get insurance treatment history",
+            "description": {
+              "content": "CONFIRMED. Previous treatment dates for a patient's insurance plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                "InsuranceHistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa8d2603-620f-4c28-a53e-c4ed0baf3492",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    "InsuranceHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97b5c550-e6f6-4d44-8bc4-c973f128a0f0",
+          "name": "Create an insurance history entry",
+          "request": {
+            "name": "Create an insurance history entry",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                "InsuranceHistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2172,\n  \"key_1\": 700,\n  \"key_2\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d7babc2-1556-4ad7-80c1-885de740b7a3",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    "InsuranceHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff7bccff-76bf-41f4-88d6-f6253a1c8c3a",
+          "name": "Get group notes",
+          "request": {
+            "name": "Get group notes",
+            "description": {
+              "content": "CONFIRMED. Group notes for a patient's procedures.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                "GroupNotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "485bf81b-fb39-4e5d-a4e6-e7797a48e7f1",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    "GroupNotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f231f0ca-9b54-4268-81fd-da8d5e43ff1c",
+          "name": "Create a group note",
+          "request": {
+            "name": "Create a group note",
+            "description": {
+              "content": "CONFIRMED. Creates a group note across multiple procedures.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                "GroupNote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2172,\n  \"key_1\": 700,\n  \"key_2\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5132c297-2475-4c81-bf3b-a91846d208ff",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    "GroupNote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3376886-1a59-4068-9716-cd922fd92f23",
+          "name": "Update a group note",
+          "request": {
+            "name": "Update a group note",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                ":ProcNum",
+                "GroupNote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ProcNum",
+                  "description": "(Required) Primary key of the procedure log."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 2172,\n  \"key_1\": 700,\n  \"key_2\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b237a55-3960-44db-88af-189f0c751f94",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    ":ProcNum",
+                    "GroupNote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ProcNum",
+                      "description": "(Required) Primary key of the procedure log."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "344a5be7-4427-4393-a753-f8a3fb9dd393",
+          "name": "Delete a group note procedure",
+          "request": {
+            "name": "Delete a group note procedure",
+            "description": {
+              "content": "CONFIRMED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "procedurelogs",
+                ":ProcNum",
+                "GroupNote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "ProcNum",
+                  "description": "(Required) Primary key of the procedure log."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f02c8850-a66a-484b-8ea4-28224e3468cf",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "procedurelogs",
+                    ":ProcNum",
+                    "GroupNote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "ProcNum",
+                      "description": "(Required) Primary key of the procedure log."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 2464\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opendental.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4076706f-1621-4ece-ba92-a17e9fb76648",
+    "name": "Open Dental Accounts & Ledger Procedures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as \"Authorization: ODFHIR {DeveloperKey}/{CustomerKey}\". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental's standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.\n\nContact Support:\n Name: Open Dental Software Vendor Relations\n Email: vendor.relations@opendental.com",
+      "type": "text/plain"
+    }
+  }
+}

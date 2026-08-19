@@ -1,0 +1,427 @@
+{
+  "item": [
+    {
+      "id": "9eb73fb9-2fb1-4900-9671-d3537be3ed3c",
+      "name": "Accounts & Ledger",
+      "description": {
+        "content": "MODELED. Adjustments and payment splits on the patient ledger.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47318937-2ef3-42b3-810b-d47fa8f09463",
+          "name": "List adjustments",
+          "request": {
+            "name": "List adjustments",
+            "description": {
+              "content": "MODELED. Ledger adjustments on patient accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "adjustments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ee37df9-a4d2-4018-9842-1201aa6e691c",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adjustments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8927,\n  \"key_1\": 929,\n  \"key_2\": 1653,\n  \"key_3\": 3987\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c7a9d8f-a2c6-4269-b4cb-13d4b2d9280a",
+          "name": "Create an adjustment",
+          "request": {
+            "name": "Create an adjustment",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "adjustments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 5351\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5de23191-7670-4004-a125-0a07ea360074",
+              "name": "Created. Typically returns a Location header and the created object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adjustments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8927,\n  \"key_1\": 929,\n  \"key_2\": 1653,\n  \"key_3\": 3987\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac5072ff-64b4-4b62-8a4e-0e84c750b7f2",
+          "name": "Update an adjustment",
+          "request": {
+            "name": "Update an adjustment",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "adjustments",
+                ":AdjNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "AdjNum",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 5351\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "312c641d-1ae2-4f37-81f2-cb4ea0cff7b7",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "adjustments",
+                    ":AdjNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "AdjNum",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8927,\n  \"key_1\": 929,\n  \"key_2\": 1653,\n  \"key_3\": 3987\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ac0e673-65c9-42ac-8f09-2d20ff7b48d7",
+          "name": "List payment splits",
+          "request": {
+            "name": "List payment splits",
+            "description": {
+              "content": "MODELED.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "paysplits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PatNum",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2caa7975-de44-4af9-9014-828caec6fd4d",
+              "name": "Success. Returns one item or an array of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "paysplits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PatNum",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8927,\n  \"key_1\": 929,\n  \"key_2\": 1653,\n  \"key_3\": 3987\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opendental.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "09c008ec-0a9a-4bf5-b955-f0d19518dd8b",
+    "name": "Open Dental Accounts & Ledger API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as \"Authorization: ODFHIR {DeveloperKey}/{CustomerKey}\". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental's standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.\n\nContact Support:\n Name: Open Dental Software Vendor Relations\n Email: vendor.relations@opendental.com",
+      "type": "text/plain"
+    }
+  }
+}

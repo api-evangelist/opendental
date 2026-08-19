@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Fees & Fee Schedules API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fees & Fee Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/fees",
+            "params": [
+              {
+                "name": "FeeSched",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ClinicNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED. Procedure fees within a fee schedule."
+        },
+        {
+          "info": {
+            "name": "Create a fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/fees",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "List fee schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/feescheds"
+          },
+          "docs": "MODELED."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

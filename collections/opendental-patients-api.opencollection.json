@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Patients API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a single patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/patients/:PatNum",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the patient."
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Retrieves one patient by PatNum."
+        },
+        {
+          "info": {
+            "name": "Update a patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/patients/:PatNum",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the patient."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED. Updates an existing patient. Patients cannot be deleted via the API."
+        },
+        {
+          "info": {
+            "name": "List patients (Simple)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/patients/Simple",
+            "params": [
+              {
+                "name": "LName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "FName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PatStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Birthdate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ClinicNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DateTStamp",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Fast listing of patients with optional filters. Faster than the full patient search."
+        },
+        {
+          "info": {
+            "name": "Search patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/patients",
+            "params": [
+              {
+                "name": "LName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "FName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Phone",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "hideInactive",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SSN",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ChartNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Birthdate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clinicNums",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Searches patients using Patient Select-style logic with many optional criteria."
+        },
+        {
+          "info": {
+            "name": "Create a patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/patients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED. Creates a new patient."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

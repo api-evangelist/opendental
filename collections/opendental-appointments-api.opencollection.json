@@ -1,0 +1,303 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Appointments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appointments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a single appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/appointments/:AptNum",
+            "params": [
+              {
+                "name": "AptNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the appointment."
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Update an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/appointments/:AptNum",
+            "params": [
+              {
+                "name": "AptNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the appointment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "List appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/appointments",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "AptStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ClinicNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ProvNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateStart",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateEnd",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Retrieves multiple appointments with optional filters."
+        },
+        {
+          "info": {
+            "name": "Create an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/appointments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "List ASAP appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/appointments/ASAP"
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Find available appointment slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/appointments/Slots",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ProvNum",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lengthMinutes",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Find WebSched available slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/appointments/SlotsWebSched"
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "List WebSched appointments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/appointments/WebSched"
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Create a WebSched appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/appointments/WebSched",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Create a planned appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/appointments/Planned",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Schedule an existing planned appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/appointments/SchedulePlanned",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Break an appointment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/appointments/:AptNum/Break",
+            "params": [
+              {
+                "name": "AptNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the appointment."
+              }
+            ]
+          },
+          "docs": "CONFIRMED. Marks an appointment as broken."
+        },
+        {
+          "info": {
+            "name": "Append to appointment note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/appointments/:AptNum/Note",
+            "params": [
+              {
+                "name": "AptNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the appointment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        },
+        {
+          "info": {
+            "name": "Update confirmation status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opendental.com/api/v1/appointments/:AptNum/Confirm",
+            "params": [
+              {
+                "name": "AptNum",
+                "value": "",
+                "type": "path",
+                "description": "Primary key of the appointment."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CONFIRMED."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

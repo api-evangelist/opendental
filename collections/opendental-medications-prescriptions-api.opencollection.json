@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Open Dental Accounts & Ledger Medications & Prescriptions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Medications & Prescriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List medications catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/medications"
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "List a patient's medications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/medicationpats",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "Add a medication to a patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/medicationpats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "List prescriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opendental.com/api/v1/rxpats",
+            "params": [
+              {
+                "name": "PatNum",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "MODELED."
+        },
+        {
+          "info": {
+            "name": "Create a prescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opendental.com/api/v1/rxpats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "MODELED."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
