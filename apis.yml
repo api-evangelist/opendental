@@ -418,6 +418,9 @@ apis:
   - type: APIReference
     url: https://www.opendental.com/site/apifees.html
 common:
+- type: CapabilityMap
+  url: capabilities/opendental-capability-edges.yml
+  name: Open Dental Business Capability Map
 - type: AgenticAccess
   url: agentic-access/opendental-agentic-access.yml
 - type: DomainSecurity

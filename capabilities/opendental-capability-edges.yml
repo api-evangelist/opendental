@@ -1,0 +1,56 @@
+slug: opendental
+provider: Open Dental
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Appointments
+  spec_file: opendental-appointments-api-openapi.yml
+  capability_id: BC-2800.10
+  capability_id_l1: BC-2800
+  capability_name: Scheduling & Appointment Management
+  confidence: 0.95
+  evidence: GET /appointments/Slots  Find available appointment slots; POST /appointments/WebSched  Create
+    a WebSched appointment; PUT /appointments/{AptNum}/Break  Break an appointment
+  reason: Operations book, reschedule, break and find open slots for patient appointments — squarely provider
+    scheduling and appointment management.
+- tag: Claims
+  spec_file: opendental-claims-api-openapi.yml
+  capability_id: BC-2870.30
+  capability_id_l1: BC-2870
+  capability_name: Claim Production & Submission
+  confidence: 0.9
+  evidence: POST /claims  Create a claim; PUT /claims/{ClaimNum}/Status  Update claim status; PUT /claims/{ClaimNum}/Split  Split
+    a claim
+  reason: Insurance claim creation, splitting and status tracking is claim production and submission within
+    provider revenue cycle.
+- tag: Patients
+  spec_file: opendental-patients-api-openapi.yml
+  capability_id: BC-2800.20
+  capability_id_l1: BC-2800
+  capability_name: Patient Registration Management
+  confidence: 0.85
+  evidence: POST /patients  Create a patient; PUT /patients/{PatNum}  Update a patient; GET /patients  Search
+    patients
+  reason: CRUD and search over patient demographic records in a practice management system is patient
+    registration and demographic stewardship.
+- tag: Payments
+  spec_file: opendental-payments-api-openapi.yml
+  capability_id: BC-2870.50
+  capability_id_l1: BC-2870
+  capability_name: Cash Posting & Payer Reconciliation
+  confidence: 0.7
+  evidence: POST /payments  Create a payment; POST /payments/Refund  Create a refund; PUT /payments/{PayNum}/Partial  Reallocate
+    payment splits
+  reason: Recording patient/insurance payments, refunds and reallocating payment splits is cash posting
+    within provider revenue cycle; overlap with patient financial services keeps the L2 choice somewhat
+    uncertain.
