@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 4
+edge_count: 5
 edges:
 - tag: Appointments
   spec_file: opendental-appointments-api-openapi.yml
@@ -19,38 +19,48 @@ edges:
   capability_id_l1: BC-2800
   capability_name: Scheduling & Appointment Management
   confidence: 0.95
-  evidence: GET /appointments/Slots  Find available appointment slots; POST /appointments/WebSched  Create
-    a WebSched appointment; PUT /appointments/{AptNum}/Break  Break an appointment
-  reason: Operations book, reschedule, break and find open slots for patient appointments — squarely provider
-    scheduling and appointment management.
+  evidence: Find available appointment slots ... Create a WebSched appointment ... List ASAP appointments
+  reason: Operations book, reschedule, break and find slots for patient appointments in a dental practice
+    — plainly provider scheduling and appointment management.
 - tag: Claims
   spec_file: opendental-claims-api-openapi.yml
   capability_id: BC-2870.30
   capability_id_l1: BC-2870
   capability_name: Claim Production & Submission
-  confidence: 0.9
-  evidence: POST /claims  Create a claim; PUT /claims/{ClaimNum}/Status  Update claim status; PUT /claims/{ClaimNum}/Split  Split
-    a claim
-  reason: Insurance claim creation, splitting and status tracking is claim production and submission within
-    provider revenue cycle.
+  confidence: 0.88
+  evidence: POST /claims  Create a claim ... PUT /claims/{ClaimNum}/Status  Update claim status
+  reason: Creation, status tracking and splitting of dental insurance claims to payers — claim production
+    and submission within provider revenue cycle.
 - tag: Patients
   spec_file: opendental-patients-api-openapi.yml
   capability_id: BC-2800.20
   capability_id_l1: BC-2800
   capability_name: Patient Registration Management
-  confidence: 0.85
-  evidence: POST /patients  Create a patient; PUT /patients/{PatNum}  Update a patient; GET /patients  Search
+  confidence: 0.75
+  evidence: POST /patients Create a patient; PUT /patients/{PatNum} Update a patient; GET /patients Search
     patients
-  reason: CRUD and search over patient demographic records in a practice management system is patient
-    registration and demographic stewardship.
+  reason: Create/update/search of patient demographic records in a practice management system is patient
+    registration and demographic stewardship. Alternative reading as master patient index (BC-2900.10)
+    exists, so not maximal confidence.
 - tag: Payments
   spec_file: opendental-payments-api-openapi.yml
-  capability_id: BC-2870.50
+  capability_id: BC-2870
   capability_id_l1: BC-2870
-  capability_name: Cash Posting & Payer Reconciliation
+  capability_name: Healthcare Revenue Cycle Management
+  confidence: 0.75
+  evidence: POST /payments Create a payment; POST /payments/Refund Create a refund; PUT /payments/{PayNum}/Partial
+    Reallocate payment splits
+  reason: Recording patient and insurance payments, refunds and payment split reallocation against the
+    patient ledger is provider revenue cycle cash handling. L2 left unset because the surface spans both
+    cash posting/reconciliation and patient financial services.
+- tag: Referrals
+  spec_file: opendental-referrals-api-openapi.yml
+  capability_id: BC-2820.10
+  capability_id_l1: BC-2820
+  capability_name: Referral Management
   confidence: 0.7
-  evidence: POST /payments  Create a payment; POST /payments/Refund  Create a refund; PUT /payments/{PayNum}/Partial  Reallocate
-    payment splits
-  reason: Recording patient/insurance payments, refunds and reallocating payment splits is cash posting
-    within provider revenue cycle; overlap with patient financial services keeps the L2 choice somewhat
-    uncertain.
+  evidence: GET /referrals List referral sources; POST /referrals Create a referral source; GET /refattaches
+    List referral attachments
+  reason: Referral sources and referral attachments to patients constitute end-to-end referral tracking
+    in a dental practice. Slight ambiguity remains because Open Dental referral sources are also used
+    to record marketing/acquisition origin, so confidence is moderate.
