@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Open Dental Accounts & Ledger Documents API
-  description: 'REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as "Authorization: ODFHIR {DeveloperKey}/{CustomerKey}". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental''s standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.'
+  title: Open Dental Documents API
+  description: REST API for Open Dental dental practice management software.
   version: v1
   contact:
     name: Open Dental Software Vendor Relations
@@ -33,6 +33,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+      operationId: getDocuments
+      x-operation-id-source: derived
     post:
       tags:
       - Documents
@@ -43,6 +45,8 @@ paths:
       responses:
         '201':
           $ref: '#/components/responses/Created'
+      operationId: postDocuments
+      x-operation-id-source: derived
   /documents/{DocNum}:
     get:
       tags:
@@ -58,6 +62,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+      operationId: getDocumentsByDocNum
+      x-operation-id-source: derived
 components:
   responses:
     Created:

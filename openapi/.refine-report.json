@@ -1,19 +1,7 @@
 {
   "provider": "opendental",
   "sources": [
-    "opendental-accounts-ledger-api-openapi.yml",
-    "opendental-appointments-api-openapi.yml",
-    "opendental-claims-api-openapi.yml",
-    "opendental-documents-api-openapi.yml",
-    "opendental-fees-fee-schedules-api-openapi.yml",
-    "opendental-medications-prescriptions-api-openapi.yml",
-    "opendental-patients-api-openapi.yml",
-    "opendental-payments-api-openapi.yml",
-    "opendental-procedures-api-openapi.yml",
-    "opendental-providers-api-openapi.yml",
-    "opendental-recalls-api-openapi.yml",
-    "opendental-referrals-api-openapi.yml",
-    "opendental-sheets-api-openapi.yml"
+    "_original/opendental-openapi.yml"
   ],
   "outputs": [
     "opendental-accounts-ledger-api-openapi.yml",
@@ -33,6 +21,24 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "opendental-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "opendental-accounts-ledger-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-appointments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-claims-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-fees-fee-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-medications-prescriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-patients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-procedures-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-providers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-recalls-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-referrals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opendental-sheets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

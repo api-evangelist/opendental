@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Open Dental Accounts & Ledger Claims API
-  description: 'REST API for Open Dental dental practice management software. The web service is hosted at Open Dental headquarters and lets approved third-party applications read and write practice data on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key, sent together in a single header as "Authorization: ODFHIR {DeveloperKey}/{CustomerKey}". The full published specification documents 130+ resource groups; this document models a representative, load-bearing subset. The paths under Patients, Appointments, Providers, ProcedureLogs (Procedures), Claims, and Payments are grounded in the published per-resource reference pages and are marked CONFIRMED below. The remaining resource groups (Accounts/Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, Sheets) follow Open Dental''s standard REST CRUD convention and are marked MODELED - verify exact paths and fields against the live spec before use. A separate local API Service (talks to the on-premises Open Dental program without routing through Open Dental servers) and a FHIR interface also exist and are out of scope for this document.'
+  title: Open Dental Claims API
+  description: REST API for Open Dental dental practice management software.
   version: v1
   contact:
     name: Open Dental Software Vendor Relations
@@ -32,6 +32,8 @@ paths:
           $ref: '#/components/responses/Ok'
         '404':
           $ref: '#/components/responses/NotFound'
+      operationId: getClaimsByClaimNum
+      x-operation-id-source: derived
     put:
       tags:
       - Claims
@@ -44,6 +46,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+      operationId: putClaimsByClaimNum
+      x-operation-id-source: derived
     delete:
       tags:
       - Claims
@@ -54,6 +58,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+      operationId: deleteClaimsByClaimNum
+      x-operation-id-source: derived
   /claims:
     get:
       tags:
@@ -80,6 +86,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+      operationId: getClaims
+      x-operation-id-source: derived
     post:
       tags:
       - Claims
@@ -90,6 +98,8 @@ paths:
       responses:
         '201':
           $ref: '#/components/responses/Created'
+      operationId: postClaims
+      x-operation-id-source: derived
   /claims/{ClaimNum}/Status:
     put:
       tags:
@@ -103,6 +113,8 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+      operationId: putClaimsByClaimNumStatus
+      x-operation-id-source: derived
   /claims/{ClaimNum}/Split:
     put:
       tags:
@@ -116,8 +128,21 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Ok'
+      operationId: putClaimsByClaimNumSplit
+      x-operation-id-source: derived
 components:
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   responses:
+    NotFound:
+      description: The requested resource was not found.
     Created:
       description: Created. Typically returns a Location header and the created object.
       content:
@@ -125,8 +150,6 @@ components:
           schema:
             type: object
             additionalProperties: true
-    NotFound:
-      description: The requested resource was not found.
     Ok:
       description: Success. Returns one item or an array of items.
       content:
@@ -147,15 +170,6 @@ components:
       description: Primary key of the claim.
       schema:
         type: integer
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey
