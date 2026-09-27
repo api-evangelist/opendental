@@ -243,20 +243,23 @@ paths:
       operationId: putAppointmentsByAptNumConfirm
       x-operation-id-source: derived
 components:
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+  parameters:
+    Offset:
+      name: Offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    AptNum:
+      name: AptNum
+      in: path
       required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
+      description: Primary key of the appointment.
+      schema:
+        type: integer
   responses:
-    NotFound:
-      description: The requested resource was not found.
-    BadRequest:
-      description: Bad request - invalid or missing fields.
     Created:
       description: Created. Typically returns a Location header and the created object.
       content:
@@ -264,6 +267,8 @@ components:
           schema:
             type: object
             additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
     Ok:
       description: Success. Returns one item or an array of items.
       content:
@@ -276,22 +281,17 @@ components:
               items:
                 type: object
                 additionalProperties: true
-  parameters:
-    AptNum:
-      name: AptNum
-      in: path
+    NotFound:
+      description: The requested resource was not found.
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
       required: true
-      description: Primary key of the appointment.
-      schema:
-        type: integer
-    Offset:
-      name: Offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey

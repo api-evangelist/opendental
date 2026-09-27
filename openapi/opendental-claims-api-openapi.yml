@@ -131,18 +131,7 @@ paths:
       operationId: putClaimsByClaimNumSplit
       x-operation-id-source: derived
 components:
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   responses:
-    NotFound:
-      description: The requested resource was not found.
     Created:
       description: Created. Typically returns a Location header and the created object.
       content:
@@ -162,6 +151,8 @@ components:
               items:
                 type: object
                 additionalProperties: true
+    NotFound:
+      description: The requested resource was not found.
   parameters:
     ClaimNum:
       name: ClaimNum
@@ -170,6 +161,15 @@ components:
       description: Primary key of the claim.
       schema:
         type: integer
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey

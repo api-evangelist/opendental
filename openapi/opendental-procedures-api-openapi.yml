@@ -179,13 +179,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    ProcNum:
-      name: ProcNum
-      in: path
-      required: true
-      description: Primary key of the procedure log.
-      schema:
-        type: integer
     Offset:
       name: Offset
       in: query
@@ -194,18 +187,14 @@ components:
       schema:
         type: integer
         default: 0
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+    ProcNum:
+      name: ProcNum
+      in: path
       required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
+      description: Primary key of the procedure log.
+      schema:
+        type: integer
   responses:
-    NotFound:
-      description: The requested resource was not found.
     Created:
       description: Created. Typically returns a Location header and the created object.
       content:
@@ -225,6 +214,17 @@ components:
               items:
                 type: object
                 additionalProperties: true
+    NotFound:
+      description: The requested resource was not found.
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey

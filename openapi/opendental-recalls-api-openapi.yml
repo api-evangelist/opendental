@@ -55,15 +55,6 @@ paths:
       operationId: putRecallsByRecallNum
       x-operation-id-source: derived
 components:
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   responses:
     Ok:
       description: Success. Returns one item or an array of items.
@@ -77,6 +68,15 @@ components:
               items:
                 type: object
                 additionalProperties: true
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey
