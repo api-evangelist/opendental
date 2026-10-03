@@ -244,6 +244,13 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
+    AptNum:
+      name: AptNum
+      in: path
+      required: true
+      description: Primary key of the appointment.
+      schema:
+        type: integer
     Offset:
       name: Offset
       in: query
@@ -252,23 +259,7 @@ components:
       schema:
         type: integer
         default: 0
-    AptNum:
-      name: AptNum
-      in: path
-      required: true
-      description: Primary key of the appointment.
-      schema:
-        type: integer
   responses:
-    Created:
-      description: Created. Typically returns a Location header and the created object.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
-    BadRequest:
-      description: Bad request - invalid or missing fields.
     Ok:
       description: Success. Returns one item or an array of items.
       content:
@@ -283,6 +274,15 @@ components:
                 additionalProperties: true
     NotFound:
       description: The requested resource was not found.
+    Created:
+      description: Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
   requestBodies:
     Generic:
       description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.

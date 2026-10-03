@@ -108,6 +108,15 @@ components:
       description: Primary key of the payment.
       schema:
         type: integer
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   responses:
     Created:
       description: Created. Typically returns a Location header and the created object.
@@ -128,15 +137,6 @@ components:
               items:
                 type: object
                 additionalProperties: true
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey

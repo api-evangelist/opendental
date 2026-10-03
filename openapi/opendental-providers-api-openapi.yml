@@ -85,24 +85,7 @@ paths:
       operationId: postProviders
       x-operation-id-source: derived
 components:
-  parameters:
-    ProvNum:
-      name: ProvNum
-      in: path
-      required: true
-      description: Primary key of the provider.
-      schema:
-        type: integer
   responses:
-    Created:
-      description: Created. Typically returns a Location header and the created object.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
-    BadRequest:
-      description: Bad request - invalid or missing fields.
     Ok:
       description: Success. Returns one item or an array of items.
       content:
@@ -117,6 +100,15 @@ components:
                 additionalProperties: true
     NotFound:
       description: The requested resource was not found.
+    Created:
+      description: Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
   requestBodies:
     Generic:
       description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
@@ -126,6 +118,14 @@ components:
           schema:
             type: object
             additionalProperties: true
+  parameters:
+    ProvNum:
+      name: ProvNum
+      in: path
+      required: true
+      description: Primary key of the provider.
+      schema:
+        type: integer
   securitySchemes:
     odfhirAuth:
       type: apiKey
