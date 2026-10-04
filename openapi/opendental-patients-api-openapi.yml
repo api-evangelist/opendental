@@ -159,39 +159,6 @@ paths:
       operationId: postPatients
       x-operation-id-source: derived
 components:
-  responses:
-    Ok:
-      description: Success. Returns one item or an array of items.
-      content:
-        application/json:
-          schema:
-            oneOf:
-            - type: object
-              additionalProperties: true
-            - type: array
-              items:
-                type: object
-                additionalProperties: true
-    Created:
-      description: Created. Typically returns a Location header and the created object.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
-    NotFound:
-      description: The requested resource was not found.
-    BadRequest:
-      description: Bad request - invalid or missing fields.
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   parameters:
     PatNum:
       name: PatNum
@@ -208,6 +175,39 @@ components:
       schema:
         type: integer
         default: 0
+  responses:
+    Ok:
+      description: Success. Returns one item or an array of items.
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              additionalProperties: true
+            - type: array
+              items:
+                type: object
+                additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
+    NotFound:
+      description: The requested resource was not found.
+    Created:
+      description: Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey

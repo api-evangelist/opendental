@@ -98,21 +98,12 @@ components:
               items:
                 type: object
                 additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
     NotFound:
       description: The requested resource was not found.
     Created:
       description: Created. Typically returns a Location header and the created object.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
-    BadRequest:
-      description: Bad request - invalid or missing fields.
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
-      required: true
       content:
         application/json:
           schema:
@@ -126,6 +117,15 @@ components:
       description: Primary key of the provider.
       schema:
         type: integer
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey

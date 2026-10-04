@@ -272,6 +272,8 @@ components:
               items:
                 type: object
                 additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
     NotFound:
       description: The requested resource was not found.
     Created:
@@ -281,8 +283,6 @@ components:
           schema:
             type: object
             additionalProperties: true
-    BadRequest:
-      description: Bad request - invalid or missing fields.
   requestBodies:
     Generic:
       description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.

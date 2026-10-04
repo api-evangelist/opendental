@@ -48,15 +48,6 @@ paths:
       operationId: postSheets
       x-operation-id-source: derived
 components:
-  requestBodies:
-    Generic:
-      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   responses:
     Created:
       description: Created. Typically returns a Location header and the created object.
@@ -77,6 +68,15 @@ components:
               items:
                 type: object
                 additionalProperties: true
+  requestBodies:
+    Generic:
+      description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   securitySchemes:
     odfhirAuth:
       type: apiKey

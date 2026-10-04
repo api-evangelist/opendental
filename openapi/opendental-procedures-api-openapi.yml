@@ -178,6 +178,22 @@ paths:
       operationId: deleteProcedurelogsByProcNumGroupNote
       x-operation-id-source: derived
 components:
+  parameters:
+    ProcNum:
+      name: ProcNum
+      in: path
+      required: true
+      description: Primary key of the procedure log.
+      schema:
+        type: integer
+    Offset:
+      name: Offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
   responses:
     Ok:
       description: Success. Returns one item or an array of items.
@@ -200,22 +216,6 @@ components:
           schema:
             type: object
             additionalProperties: true
-  parameters:
-    ProcNum:
-      name: ProcNum
-      in: path
-      required: true
-      description: Primary key of the procedure log.
-      schema:
-        type: integer
-    Offset:
-      name: Offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   requestBodies:
     Generic:
       description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
