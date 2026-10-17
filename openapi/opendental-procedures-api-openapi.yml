@@ -178,6 +178,28 @@ paths:
       operationId: deleteProcedurelogsByProcNumGroupNote
       x-operation-id-source: derived
 components:
+  responses:
+    Created:
+      description: Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    NotFound:
+      description: The requested resource was not found.
+    Ok:
+      description: Success. Returns one item or an array of items.
+      content:
+        application/json:
+          schema:
+            oneOf:
+            - type: object
+              additionalProperties: true
+            - type: array
+              items:
+                type: object
+                additionalProperties: true
   parameters:
     ProcNum:
       name: ProcNum
@@ -194,28 +216,6 @@ components:
       schema:
         type: integer
         default: 0
-  responses:
-    Ok:
-      description: Success. Returns one item or an array of items.
-      content:
-        application/json:
-          schema:
-            oneOf:
-            - type: object
-              additionalProperties: true
-            - type: array
-              items:
-                type: object
-                additionalProperties: true
-    NotFound:
-      description: The requested resource was not found.
-    Created:
-      description: Created. Typically returns a Location header and the created object.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   requestBodies:
     Generic:
       description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.

@@ -100,14 +100,15 @@ paths:
       operationId: putPaymentsByPayNumPartial
       x-operation-id-source: derived
 components:
+  parameters:
+    PayNum:
+      name: PayNum
+      in: path
+      required: true
+      description: Primary key of the payment.
+      schema:
+        type: integer
   responses:
-    Created:
-      description: Created. Typically returns a Location header and the created object.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
     Ok:
       description: Success. Returns one item or an array of items.
       content:
@@ -120,14 +121,13 @@ components:
               items:
                 type: object
                 additionalProperties: true
-  parameters:
-    PayNum:
-      name: PayNum
-      in: path
-      required: true
-      description: Primary key of the payment.
-      schema:
-        type: integer
+    Created:
+      description: Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
   requestBodies:
     Generic:
       description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.

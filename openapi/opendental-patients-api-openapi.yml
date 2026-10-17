@@ -159,23 +159,18 @@ paths:
       operationId: postPatients
       x-operation-id-source: derived
 components:
-  parameters:
-    PatNum:
-      name: PatNum
-      in: path
-      required: true
-      description: Primary key of the patient.
-      schema:
-        type: integer
-    Offset:
-      name: Offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        default: 0
   responses:
+    Created:
+      description: Created. Typically returns a Location header and the created object.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: true
+    BadRequest:
+      description: Bad request - invalid or missing fields.
+    NotFound:
+      description: The requested resource was not found.
     Ok:
       description: Success. Returns one item or an array of items.
       content:
@@ -188,17 +183,6 @@ components:
               items:
                 type: object
                 additionalProperties: true
-    BadRequest:
-      description: Bad request - invalid or missing fields.
-    NotFound:
-      description: The requested resource was not found.
-    Created:
-      description: Created. Typically returns a Location header and the created object.
-      content:
-        application/json:
-          schema:
-            type: object
-            additionalProperties: true
   requestBodies:
     Generic:
       description: Resource fields as a JSON object. See the per-resource reference page on opendental.com/site/apispecification.html for exact field names.
@@ -208,6 +192,22 @@ components:
           schema:
             type: object
             additionalProperties: true
+  parameters:
+    Offset:
+      name: Offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        default: 0
+    PatNum:
+      name: PatNum
+      in: path
+      required: true
+      description: Primary key of the patient.
+      schema:
+        type: integer
   securitySchemes:
     odfhirAuth:
       type: apiKey
