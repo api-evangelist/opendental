@@ -1,4 +1,4 @@
-# Open Dental (opendental)
+# Open Dental
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,326 +64,142 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Open Dental is dental practice management software with an openly documented public REST API. The API is hosted at Open Dental headquarters (base `https://api.opendental.com/api/v1`) and lets approved third-party developers read and write practice data - patients, appointments, providers, procedures, insurance claims, payments, ledger adjustments, fee schedules, recalls, documents, medications and prescriptions, referrals, and clinical sheets - on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key sent together in an `Authorization: ODFHIR {DeveloperKey}/{CustomerKey}` header. The public specification documents 130+ resource groups with GET/POST/PUT/DELETE operations. Open Dental also offers a local API Service that talks to the on-premises Open Dental program without routing through Open Dental's servers, plus a separate FHIR interface.
+Open Dental is dental practice management software with an openly documented public REST API. The API is hosted at Open Dental headquarters (base https://api.opendental.com/api/v1) and lets approved third-party developers read and write practice data - patients, appointments, providers, procedures, insurance claims, payments, ledger adjustments, fee schedules, recalls, documents, medications and prescriptions, referrals, and clinical sheets - on behalf of Open Dental customers. Requests authenticate with a per-application Developer Key and a per-customer Customer Key sent together in an Authorization ODFHIR {DeveloperKey}/{CustomerKey} header. The public spec documents 130+ resource groups with GET/POST/PUT/DELETE operations. Open Dental also runs a local API Service option that talks to the on-premises Open Dental program without routing through Open Dental's servers, and a separate FHIR interface.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/opendental/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/opendental/refs/heads/main/apis.yml)
+**Areas:** Dental · Practice Management · Healthcare · Electronic Health Records · Patient Records · REST
 
-## Tags
+## Open Dental on APIs.io
 
-- Dental
-- Practice Management
-- Healthcare
-- EHR
-- Patient Records
-- REST
+Everything profiled for Open Dental is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/opendental/](https://apis.io/providers/opendental/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2026-07-03
-- **Modified:** 2026-07-03
+- [Open Dental Accounts & Ledger API](https://apis.io/apis/opendental/opendental-accounts-ledger-api/) — MODELED. Adjustments and payment splits on the patient ledger.
+- [Open Dental Appointments API](https://apis.io/apis/opendental/opendental-appointments-api/) — CONFIRMED. Scheduling, slots, and WebSched.
+- [Open Dental Claims API](https://apis.io/apis/opendental/opendental-claims-api/) — CONFIRMED. Insurance claims and claim workflow.
+- [Open Dental Documents API](https://apis.io/apis/opendental/opendental-documents-api/) — MODELED. Files and images attached to a patient.
+- [Open Dental Fees & Fee Schedules API](https://apis.io/apis/opendental/opendental-fees-fee-schedules-api/) — MODELED. Procedure fees and fee schedules.
+- [Open Dental Medications & Prescriptions API](https://apis.io/apis/opendental/opendental-medications-prescriptions-api/) — MODELED. Medication catalog, patient meds, and prescriptions.
+- [Open Dental Patients API](https://apis.io/apis/opendental/opendental-patients-api/) — CONFIRMED. Patient demographic records.
+- [Open Dental Payments API](https://apis.io/apis/opendental/opendental-payments-api/) — CONFIRMED. Patient payments, refunds, and split reallocation.
+- [Open Dental Procedures API](https://apis.io/apis/opendental/opendental-procedures-api/) — CONFIRMED. ProcedureLogs, insurance history, and group notes.
+- [Open Dental Providers API](https://apis.io/apis/opendental/opendental-providers-api/) — CONFIRMED. Dentists, hygienists, and billing entities.
+- [Open Dental Recalls API](https://apis.io/apis/opendental/opendental-recalls-api/) — MODELED. Hygiene / continuing-care recalls.
+- [Open Dental Referrals API](https://apis.io/apis/opendental/opendental-referrals-api/) — MODELED. Referral sources and attachments.
+- [Open Dental Sheets API](https://apis.io/apis/opendental/opendental-sheets-api/) — MODELED. Configurable clinical and administrative forms.
 
-## Authentication
+### Published properties
 
-Every request carries an `Authorization` header:
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-```
-Authorization: ODFHIR {DeveloperKey}/{CustomerKey}
-```
+#### Agentic access (1)
 
-The Developer Key is issued per application by Open Dental Vendor Relations (`vendor.relations@opendental.com`); the Customer Key is enabled per Open Dental customer. Some endpoints also accept HTTP Basic auth with the Developer Key as the username and the Customer Key as the password.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## APIs
+- [Opendental Agentic Access](https://apis.io/agentic-access/opendental/opendental-agentic-access/)
 
-### Open Dental Patients API
+#### Collections (14)
 
-Create, read, update, and search patient demographic records. Includes a fast `Simple` listing and a full Patient Select-style search with dozens of filters. Patients cannot be deleted via the API.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://www.opendental.com/site/apipatients.html](https://www.opendental.com/site/apipatients.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
+- [Open Dental API](https://apis.io/collections/opendental/open-opendental/)
+- [Open Dental Accounts & Ledger API](https://apis.io/collections/opendental/open-opendental-accounts-ledger-api/)
+- [Open Dental Accounts & Ledger Appointments API](https://apis.io/collections/opendental/open-opendental-appointments-api/)
+- [Open Dental Accounts & Ledger Claims API](https://apis.io/collections/opendental/open-opendental-claims-api/)
+- [Open Dental Accounts & Ledger Documents API](https://apis.io/collections/opendental/open-opendental-documents-api/)
+- [Open Dental Accounts & Ledger Fees & Fee Schedules API](https://apis.io/collections/opendental/open-opendental-fees-fee-schedules-api/)
+- [Open Dental Accounts & Ledger Medications & Prescriptions API](https://apis.io/collections/opendental/open-opendental-medications-prescriptions-api/)
+- [Open Dental Accounts & Ledger Patients API](https://apis.io/collections/opendental/open-opendental-patients-api/)
+- [Open Dental Accounts & Ledger Payments API](https://apis.io/collections/opendental/open-opendental-payments-api/)
+- [Open Dental Accounts & Ledger Procedures API](https://apis.io/collections/opendental/open-opendental-procedures-api/)
+- [Open Dental Accounts & Ledger Providers API](https://apis.io/collections/opendental/open-opendental-providers-api/)
+- [Open Dental Accounts & Ledger Recalls API](https://apis.io/collections/opendental/open-opendental-recalls-api/)
+- [Open Dental Accounts & Ledger Referrals API](https://apis.io/collections/opendental/open-opendental-referrals-api/)
+- [Open Dental Accounts & Ledger Sheets API](https://apis.io/collections/opendental/open-opendental-sheets-api/)
 
-#### Tags
+#### Security (2)
 
-- Patients
-- Demographics
-- Records
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Opendental Authentication](https://apis.io/security/opendental/opendental-authentication/)
+- [Opendental Domain Security](https://apis.io/security/opendental/opendental-domain-security/)
 
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apipatients.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Open Dental Appointments API
+Published plans, tiers and prices.
 
-Schedule and manage appointments - standard, planned, and WebSched - find open time slots, read ASAP and WebSched lists, break appointments, append notes, and update confirmation status.
+- [Opendental Plans Pricing](https://apis.io/plans/opendental/opendental-plans-pricing/)
 
-- **Human URL:** [https://www.opendental.com/site/apiappointments.html](https://www.opendental.com/site/apiappointments.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Appointments
-- Scheduling
-- WebSched
+- [Opendental Rate Limits](https://apis.io/rate-limits/opendental/opendental-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apiappointments.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+What the API costs to run, by operation.
 
-### Open Dental Providers API
+- [Opendental Finops](https://apis.io/finops/opendental/opendental-finops/)
 
-Read, create, and update providers - dentists, hygienists, billing entities, and dummy providers - with optional filtering by clinic or modification timestamp.
+## Where to find this API
 
-- **Human URL:** [https://www.opendental.com/site/apiproviders.html](https://www.opendental.com/site/apiproviders.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Tags
-
-- Providers
-- Staff
-- Clinics
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apiproviders.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Procedures API
-
-Full CRUD over ProcedureLogs (individual treatment procedures on a patient's chart), plus insurance treatment-history entries and group notes across multiple procedures.
-
-- **Human URL:** [https://www.opendental.com/site/apiprocedurelogs.html](https://www.opendental.com/site/apiprocedurelogs.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Procedures
-- ProcedureLogs
-- Treatment
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apiprocedurelogs.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Insurance & Claims API
-
-Manage insurance claims and related insurance data - create, read, update, and delete claims, change claim status, split claims, and work with insurance plans, subscribers, benefits, and claim procedures.
-
-- **Human URL:** [https://www.opendental.com/site/apiclaims.html](https://www.opendental.com/site/apiclaims.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Claims
-- Insurance
-- Benefits
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apiclaims.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Payments API
-
-Post patient payments, issue refunds, update payment details, and reallocate an existing payment's splits across procedures and payment-plan charges.
-
-- **Human URL:** [https://www.opendental.com/site/apipayments.html](https://www.opendental.com/site/apipayments.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Payments
-- Refunds
-- Billing
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apipayments.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Accounts & Ledger API
-
-Work with the patient account ledger - adjustments, payment splits (PaySplits), payment plans and charges, and statements. *(Endpoints modeled on Open Dental's standard REST CRUD convention; verify against the live spec.)*
-
-- **Human URL:** [https://www.opendental.com/site/apispecification.html](https://www.opendental.com/site/apispecification.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Ledger
-- Adjustments
-- PaySplits
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apispecification.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Fees & Fee Schedules API
-
-Manage procedure fees and the fee schedules (FeeScheds) that price them across procedure code, provider, and clinic. *(Endpoints modeled; verify against the live spec.)*
-
-- **Human URL:** [https://www.opendental.com/site/apifees.html](https://www.opendental.com/site/apifees.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Fees
-- Fee Schedules
-- Pricing
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apifees.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Recalls API
-
-Read and manage patient recalls - the hygiene and continuing-care reminders that drive re-appointment. *(Endpoints modeled; verify against the live spec.)*
-
-- **Human URL:** [https://www.opendental.com/site/apispecification.html](https://www.opendental.com/site/apispecification.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Recalls
-- Hygiene
-- Reminders
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apispecification.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Documents API
-
-Upload, download, and manage documents attached to a patient's record - scanned forms, images, and files in the imaging module. *(Endpoints modeled; verify against the live spec.)*
-
-- **Human URL:** [https://www.opendental.com/site/apispecification.html](https://www.opendental.com/site/apispecification.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Documents
-- Images
-- Attachments
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apispecification.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Medications & Prescriptions API
-
-Manage the medication catalog (Medications), a patient's medication list (MedicationPats), and prescriptions written for patients (RxPats). *(Endpoints modeled; verify against the live spec.)*
-
-- **Human URL:** [https://www.opendental.com/site/apispecification.html](https://www.opendental.com/site/apispecification.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Medications
-- Prescriptions
-- RxPats
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apispecification.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Referrals API
-
-Manage referral sources and specialists (Referrals) and the attachments that link a referral to a patient or procedure (RefAttaches). *(Endpoints modeled; verify against the live spec.)*
-
-- **Human URL:** [https://www.opendental.com/site/apispecification.html](https://www.opendental.com/site/apispecification.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Referrals
-- Specialists
-- RefAttaches
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apispecification.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Open Dental Sheets API
-
-Read and create Sheets - the configurable clinical and administrative forms (consent forms, patient forms, treatment plans) that Open Dental renders and stores per patient. *(Endpoints modeled; verify against the live spec.)*
-
-- **Human URL:** [https://www.opendental.com/site/apispecification.html](https://www.opendental.com/site/apispecification.html)
-- **Base URL:** `https://api.opendental.com/api/v1`
-
-#### Tags
-
-- Sheets
-- Forms
-- eForms
-
-#### Properties
-
-- [Documentation](https://www.opendental.com/site/apispecification.html)
-- [API Reference](https://www.opendental.com/site/apispecification.html)
-- [OpenAPI](openapi/opendental-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/opendental.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/opendental.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/OpenDental)
-- [LinkedIn](https://www.linkedin.com/company/open-dental-software)
 - [Website](https://www.opendental.com)
 - [Documentation](https://www.opendental.com/site/apispecification.html)
-- [Plans](plans/opendental-plans-pricing.yml)
-- [Rate Limits](rate-limits/opendental-rate-limits.yml)
-- [Fin Ops](finops/opendental-finops.yml)
+- [Blog](https://opendental.blog/feed/)
+- [GitHub](https://github.com/OpenDental)
 
-## Notes
+## API Evangelist rating
 
-- **Endpoint confirmation:** Patients, Appointments, Providers, Procedures (ProcedureLogs), Insurance & Claims, and Payments are grounded in Open Dental's published per-resource reference pages. Accounts & Ledger, Fees & Fee Schedules, Recalls, Documents, Medications & Prescriptions, Referrals, and Sheets are modeled on Open Dental's standard REST CRUD convention and the spec's resource index - verify exact paths and fields against the live specification. The full spec documents 130+ resource groups.
-- **Rate limits:** Cloud API throughput is throttled by permission tier (read-only ~1 request / 5 seconds; higher tiers ~1 request / second). The on-premises Local API / API Service is not throttled. Expect `429 TooManyRequests` (honor `Retry-After`) and `504 Gateway Timeout` for requests exceeding the 60-second processing limit.
-- **WebSocket:** Open Dental exposes no documented public WebSocket API - the public surface is request/response REST (cloud API, Local API / API Service, and a separate FHIR interface). See `review.yml`.
+**Kin Score 26.9** — thin · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 49.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 7.9 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/opendental/](https://apis.io/providers/opendental/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Open Dental: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/opendental/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
